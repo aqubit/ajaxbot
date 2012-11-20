@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<fieldset>
+	<legend>
+		<ice:outputText value="Localización" />
+	</legend>
+	<ice:panelGroup styleClass="form_3_pnl_css">
+		<ul>
+			<li><ice:outputText
+					value="#{msg['page.form.departamento']} #{msg['page.form.requerid']}" />
+				<ice:selectOneMenu
+					valueChangeListener="#{registrarLocalizacion.changeDepartamento}"
+					partialSubmit="true" value="#{registrarLocalizacion.deptoId}">
+					<f:selectItem itemValue=""
+						itemLabel="#{msg['page.form.seleccione']}" />
+					<f:selectItems
+						value="#{registrarLocalizacion.departamentoMap.entrySet()}"
+						var="entry" itemValue="#{entry.key}" itemLabel="#{entry.value}" />
+				</ice:selectOneMenu></li>
+			<li class="rowspan"><ice:outputText
+					value="#{msg['page.form.municipio']} #{msg['page.form.requerid']}" />
+				<ice:panelGroup>
+					<ice:selectOneMenu value="#{registrarLocalizacion.codigoMunicipio}"
+						immediate="true">
+						<f:selectItem itemValue=""
+							itemLabel="#{msg['page.form.seleccione']}" />
+						<f:selectItems
+							value="#{registrarLocalizacion.municipioMap.entrySet()}"
+							var="entry" itemValue="#{entry.key}" itemLabel="#{entry.value}" />
+					</ice:selectOneMenu>
+					<ice:commandButton
+						actionListener="#{registrarLocalizacion.addSelectedDptoMunOntable}"
+						title="#{msg['page.button.add']}" styleClass="addShort_css"
+						partialSubmit="true" />
+				</ice:panelGroup></li>
+		</ul>
+	</ice:panelGroup>
+	<ice:panelGroup>
+		<ice:inputHidden id="radSoliMunicipios"
+			validatorMessage="#{msg['page.validation.missing.data.localizacion.municipio']}"
+			rendered="#{registrarLocalizacion.isEmptyTableMunicipios}">
+			<f:validator validatorId="BasicValidator"
+				disabled="#{!param['VALIDATE']}" />
+		</ice:inputHidden>
+		<ice:message for="radSoliMunicipios" />
+	</ice:panelGroup>
+	<ice:panelGroup styleClass="scroll_pnl_css">
+		<ice:dataTable id="tDepMun" var="depmun"
+			value="#{registrarLocalizacion.deparMunTableList}" rows="5"
+			width="100%" columnWidths="40%,40%,20%">
+			<ice:column groupOn="#{depmun.nombre}">
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.departamento']}" />
+				</f:facet>
+				<ice:outputText value="#{depmun.nombre}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.municipio']}" />
+				</f:facet>
+				<ice:outputText value="#{depmun.radMunicipios[0].nombre}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.delete']}" />
+				</f:facet>
+				<ice:commandButton
+					action="#{registrarLocalizacion.removeDptoMunTable}"
+					title="#{msg['page.table.header.delete']}"
+					styleClass="deleteShort_css"
+					rendered="#{registrarLocalizacion.renderedDeleteDepMunicipio}">
+					<f:setPropertyActionListener
+						target="#{registrarLocalizacion.municipioToDeleteId}"
+						value="#{depmun.radMunicipios[0].id}" />
+				</ice:commandButton>
+			</ice:column>
+		</ice:dataTable>
+		<center>
+			<ice:dataPaginator id="dataPaginatorDepMun" for="tDepMun"
+				paginator="true" fastStep="3" paginatorMaxPages="3"
+				rendered="#{registrarLocalizacion.renderedPaginatorDepMunicipio}">
+				<f:facet name="first">
+					<ice:graphicImage url="/css/css-images/arrow-first.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.firstPage']}" />
+				</f:facet>
+				<f:facet name="last">
+					<ice:graphicImage url="/css/css-images/arrow-last.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.lastPage']}" />
+				</f:facet>
+				<f:facet name="previous">
+					<ice:graphicImage url="/css/css-images/arrow-previous.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.previousPage']}" />
+				</f:facet>
+				<f:facet name="next">
+					<ice:graphicImage url="/css/css-images/arrow-next.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.nextPage']}" />
+				</f:facet>
+				<f:facet name="fastforward">
+					<ice:graphicImage url="/css/css-images/arrow-ff.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.fastForward']}" />
+				</f:facet>
+				<f:facet name="fastrewind">
+					<ice:graphicImage url="/css/css-images/arrow-fr.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.fastBackward']}" />
+				</f:facet>
+			</ice:dataPaginator>
+		</center>
+	</ice:panelGroup>
+</fieldset>
+<fieldset>
+	<legend>
+		<ice:outputText value="#{msg['page.title.ingresoCoordenadas']}" />
+	</legend>
+	<ice:panelGroup styleClass="form_3_pnl_css">
+		<ul>
+			<li><ice:outputText for="radPlanchasIGAC"
+					value="#{msg['page.form.planchaIGAC']} #{msg['page.form.requerid']}" />
+				<ice:selectOneMenu id="radPlanchasIGAC"
+					value="#{registrarLocalizacion.localizacion.radPlanchasIGAC.domPlanchaIGAC}"
+					valueChangeListener="#{registrarLocalizacion.planchaIGACChange}"
+					partialSubmit="true"
+					title="#{msg['page.form.planchaIGAC.tooltip']}">
+					<f:selectItem itemValue=""
+						itemLabel="#{msg['page.form.seleccione']}" />
+					<f:selectItems
+						value="#{registrarLocalizacion.planchaIGACMap.entrySet()}"
+						var="entry" itemValue="#{entry.key}" itemLabel="#{entry.value}" />
+					<f:validator validatorId="BasicValidator"
+						disabled="#{!param['VALIDATE']}" />
+				</ice:selectOneMenu> <ice:message for="radPlanchasIGAC" /></li>
+			<li><ice:outputText for="domSistemaOrigen"
+					value="#{msg['page.form.sistemaOrigen']}" /> <ice:inputText
+					id="domSistemaOrigen"
+					value="#{registrarLocalizacion.localizacion.radPlanchasIGAC.sistemaOrigen}"
+					readonly="true" /> <ice:message for="domSistemaOrigen" /></li>
+		</ul>
+	</ice:panelGroup>
+	<ice:panelGroup styleClass="form_3_pnl_css">
+		<ul>
+			<li class="colspan_3 rowspan"><ice:outputText
+					value="#{msg['page.form.mensajePoligono']}" /></li>
+		</ul>
+	</ice:panelGroup>
+	<ice:panelGroup styleClass="form_3_pnl_css">
+		<ul>
+			<li class="colspan_3 rowspan"><ice:outputText
+					value="#{msg['page.form.ingresoCoordenadas']}" /></li>
+			<li class="colspan_3 rowspan"><ice:selectOneRadio
+					value="#{registrarLocalizacion.booleanLocalizacion}"
+					valueChangeListener="#{registrarLocalizacion.onSourceTypeValueChange}"
+					inmediate="true" partialSubmit="true" layout="lineDirection">
+					<f:selectItems value="#{registrarLocalizacion.booleanoListGroup}" />
+				</ice:selectOneRadio></li>
+		</ul>
+	</ice:panelGroup>
+	<ice:panelGroup rendered="#{registrarLocalizacion.selectedGroup}"
+		styleClass="form_3_pnl_css">
+		<ul>
+			<li><ice:outputText for="x"
+					value="#{msg['page.form.x']} #{msg['page.form.requerid']}" /> <ice:inputText
+					id="x" value="#{registrarLocalizacion.coordenada.coordenadaX}"
+					maxlength="7"
+					converterMessage="#{msg['javax.faces.converter.LongConverter.coordenadas']}" />
+				<ice:message for="x" showDetail="true" showSummary="false" /></li>
+			<li><ice:outputText for="y"
+					value="#{msg['page.form.y']} #{msg['page.form.requerid']}" /> <ice:panelGroup>
+					<ice:inputText id="y"
+						value="#{registrarLocalizacion.coordenada.coordenadaY}"
+						maxlength="7"
+						onclick="javascript:document.getElementById(this.id).select();"
+						converterMessage="#{msg['javax.faces.converter.LongConverter.coordenadas']}" />
+					<ice:message for="y" showDetail="true" showSummary="false" />
+					<ice:commandButton
+						actionListener="#{registrarLocalizacion.addCoordenada}"
+						title="#{msg['page.button.add']}" styleClass="addShort_css" />
+				</ice:panelGroup></li>
+		</ul>
+	</ice:panelGroup>
+	<ice:panelGroup rendered="#{!registrarLocalizacion.selectedGroup}"
+		styleClass="form_3_pnl_css">
+		<ul>
+			<li class="colspan_2">
+				<table style="width: 500px">
+					<tr>
+						<td><ace:fileEntry id="fileEntryComp"
+								label="#{msg['page.button.loadFile']}" style="float:left"
+								useOriginalFilename="true"
+								absolutePath="#{registrarLocalizacion.repositorioDocumentosTmpPath}"
+								fileEntryListener="#{registrarLocalizacion.uploadFileActionListener}"
+								maxFileCount="1">
+								<h:commandButton title="#{msg['page.button.loadFile']}"
+									styleClass="iceCmdBtn fileCoordShort_css" />
+							</ace:fileEntry></td>
+						<td><ice:outputText value="#{msg['page.button.loadFile']}" />
+						</td>
+					</tr>
+				</table>
+			</li>
+			<li class="colspan_3" style="height: 30px"><ice:outputText
+					value="#{msg['page.message.cargarArchivo']}" /></li>
+		</ul>
+	</ice:panelGroup>
+	<ice:panelGroup>
+		<ice:inputHidden id="radCoordenadas"
+			validatorMessage="#{msg['page.validation.missing.data.tbl3']}"
+			rendered="#{registrarLocalizacion.isEmptyTableCoordenadas}">
+			<f:validator validatorId="BasicValidator"
+				disabled="#{!param['VALIDATE']}" />
+		</ice:inputHidden>
+		<ice:message for="radCoordenadas" />
+	</ice:panelGroup>
+	<ice:panelGroup styleClass="scroll_pnl_css">
+		<ice:dataTable varStatus="status" id="tableCoordenada"
+			var="coordenadas" value="#{registrarLocalizacion.radCoordenadas}"
+			resizable="true" rows="5" width="100%"
+			columnWidths="8%, 30%, 30%, 8%, 8%, 8%, 8%">
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.orden']}" />
+				</f:facet>
+				<ice:outputText value="#{status.index + 1}"
+					rendered="#{registrarLocalizacion.renderedEditCoordenada}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.x']}" />
+				</f:facet>
+				<ice:outputText value="#{coordenadas.coordenadaX}"
+					rendered="#{not registrarLocalizacion.showEditCoordenada}" />
+				<ice:inputText id="columnX" value="#{coordenadas.coordenadaX}"
+					maxlength="7"
+					converterMessage="#{msg['javax.faces.converter.LongConverter.coordenadas']}"
+					rendered="#{registrarLocalizacion.showEditCoordenada}" />
+				<ice:message for="columnX" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.y']}" />
+				</f:facet>
+				<ice:outputText value="#{coordenadas.coordenadaY}"
+					rendered="#{not registrarLocalizacion.showEditCoordenada}" />
+				<ice:inputText id="columnY" value="#{coordenadas.coordenadaY}"
+					maxlength="7"
+					converterMessage="#{msg['javax.faces.converter.LongConverter.coordenadas']}"
+					rendered="#{registrarLocalizacion.showEditCoordenada}" />
+				<ice:message for="columnY" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.subir']}" />
+				</f:facet>
+				<ice:commandButton
+					actionListener="#{registrarLocalizacion.upCoordenada}"
+					title="#{msg['page.table.header.subir']}" styleClass="upShort_css"
+					rendered="#{registrarLocalizacion.renderedEditCoordenada and registrarLocalizacion.renderedDeleteCoordenada}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.bajar']}" />
+				</f:facet>
+				<ice:commandButton
+					actionListener="#{registrarLocalizacion.downCoordenada}"
+					title="#{msg['page.table.header.bajar']}"
+					styleClass="downShort_css"
+					rendered="#{registrarLocalizacion.renderedEditCoordenada and registrarLocalizacion.renderedDeleteCoordenada}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.edit']}" />
+				</f:facet>
+				<center>
+					<ice:commandButton
+						action="#{registrarLocalizacion.editCoordenadaAction}"
+						title="#{msg['page.table.header.edit']}"
+						styleClass="editShort_css"
+						rendered="#{registrarLocalizacion.renderedEditCoordenada and not registrarLocalizacion.showEditCoordenada}">
+						<f:setPropertyActionListener
+							target="#{registrarLocalizacion.coordenada}"
+							value="#{coordenadas}" />
+					</ice:commandButton>
+					<ice:commandButton
+						actionListener="#{registrarLocalizacion.cancelCoordenadaAction}"
+						title="#{msg['page.table.header.cancel']}"
+						styleClass="btnCancel_css"
+						rendered="#{registrarLocalizacion.showAcceptCoordenada}" />
+					<ice:commandButton
+						actionListener="#{registrarLocalizacion.acceptCoordenadaAction}"
+						title="#{msg['page.table.header.accept']}"
+						styleClass="btnAccept_css"
+						rendered="#{registrarLocalizacion.showAcceptCoordenada}" />
+				</center>
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.delete']}" />
+				</f:facet>
+				<ice:commandButton
+					action="#{registrarLocalizacion.deleteCoordenadaActionListener}"
+					title="#{msg['page.table.header.delete']}"
+					styleClass="deleteShort_css"
+					rendered="#{registrarLocalizacion.renderedEditCoordenada and registrarLocalizacion.renderedDeleteCoordenada}">
+					<f:setPropertyActionListener
+						target="#{registrarLocalizacion.coordenada}"
+						value="#{coordenadas}" />
+				</ice:commandButton>
+			</ice:column>
+		</ice:dataTable>
+		<center>
+			<ice:dataPaginator for="tableCoordenada" paginator="true"
+				fastStep="3" paginatorMaxPages="3"
+				rendered="#{registrarLocalizacion.renderedPaginatorCoordenada}">
+				<f:facet name="first">
+					<ice:graphicImage url="/css/css-images/arrow-first.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.firstPage']}" />
+				</f:facet>
+				<f:facet name="last">
+					<ice:graphicImage url="/css/css-images/arrow-last.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.lastPage']}" />
+				</f:facet>
+				<f:facet name="previous">
+					<ice:graphicImage url="/css/css-images/arrow-previous.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.previousPage']}" />
+				</f:facet>
+				<f:facet name="next">
+					<ice:graphicImage url="/css/css-images/arrow-next.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.nextPage']}" />
+				</f:facet>
+				<f:facet name="fastforward">
+					<ice:graphicImage url="/css/css-images/arrow-ff.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.fastForward']}" />
+				</f:facet>
+				<f:facet name="fastrewind">
+					<ice:graphicImage url="/css/css-images/arrow-fr.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.fastBackward']}" />
+				</f:facet>
+			</ice:dataPaginator>
+		</center>
+	</ice:panelGroup>
+	<ice:panelGroup>
+		<ice:inputHidden id="radPoligono"
+			validatorMessage="#{msg['page.validation.missing.data.localizacion']}"
+			rendered="#{!registrarLocalizacion.poligonoVisualizado}">
+			<f:validator validatorId="BasicValidator"
+				disabled="#{!param['VALIDATE'] or param['BUTTON_VISUALIZAR']}" />
+		</ice:inputHidden>
+		<ice:message for="radPoligono" />
+		<ice:inputHidden id="validacionGlobal"
+			validatorMessage="#{msg['page.validation.missing.data.localizacion.resumen']}"
+			rendered="#{registrarLocalizacion.isIncompleteForm}">
+			<f:validator validatorId="FormValidator"
+				disabled="#{!param['VALIDATE']}" />
+		</ice:inputHidden>
+	</ice:panelGroup>
+</fieldset>
+<fieldset>
+	<ice:panelGroup styleClass="pnlBtn_css">
+		<center>
+			<ice:commandButton title="#{msg['page.button.prev']}"
+				value="#{msg['page.button.prev']}"
+				action="#{radweb.visualizarSolicitud}" partialSubmit="true"
+				panelConfirmation="nextConfirmPanel" />
+			<ice:commandButton title="#{msg['page.button.save']}"
+				value="#{msg['page.button.save']}"
+				actionListener="#{radweb.prepareSave}">
+				<f:param name="VALIDATE" value="true" />
+				<f:param name="SHOW_GLOBAL_MESSAGE" value="true" />
+			</ice:commandButton>
+			<ice:commandButton title="#{msg['page.button.cancel']}"
+				value="#{msg['page.button.cancel']}"
+				action="#{registrarLocalizacion.cancel}" partialSubmit="true"
+				panelConfirmation="nextConfirmPanel" />
+			<ice:commandButton title="#{msg['page.button.show']}"
+				value="#{msg['page.button.show']}"
+				actionListener="#{registrarLocalizacion.showMap}">
+				<f:param name="VALIDATE" value="true" />
+				<f:param name="BUTTON_VISUALIZAR" value="true" />
+			</ice:commandButton>
+		</center>
+	</ice:panelGroup>
+</fieldset>
+
+<ice:panelGroup styleClass="pnlBtn_css">
+	<ice:commandButton value="#{msg['page.button.radicar']}"
+		actionListener="#{radweb.prepareRadicar}"
+		panelConfirmation="radicarConfirmPanel">
+		<f:param name="SHOW_GLOBAL_MESSAGE" value="true" />
+	</ice:commandButton>
+</ice:panelGroup>
+
+<ice:panelPopup id="viewerPnlPop" draggable="false" modal="true"
+	rendered="#{registrarLocalizacion.viewerRendered}" autoCentre="true">
+	<f:facet name="header">
+		<ice:panelGroup styleClass="popupHeaderWrapper">
+			<ice:outputText value="#{msg['page.viewerPanelPopup.title']}"
+				styleClass="popupHeaderText" />
+			<ice:commandButton id="modalPnlCloseBtn"
+				image="/design/images/icons/cancelShort_css.gif" type="button"
+				actionListener="#{registrarLocalizacion.hideMap}"
+				styleClass="cancelShort_css"
+				title="#{msg['page.viewerPanelPopup.close']}"
+				alt="#{msg['page.viewerPanelPopup.close']}" />
+		</ice:panelGroup>
+	</f:facet>
+	<f:facet name="body">
+		<ice:panelGroup styleClass="popupBody">
+			<iframe
+				src="#{facesContext.externalContext.requestContextPath}/pages/viewer/index.jsf"
+				height="500PX" width="900px" frameborder="0" />
+		</ice:panelGroup>
+	</f:facet>
+</ice:panelPopup>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:ice="http://www.icesoft.com/icefaces/component" lang="es"
+	xml:lang="es">
+<h:head>
+	<title id="title"><ui:insert name="title" /></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+	<!--link href="./resources/images/favicon.ico" rel="shortcut icon"
+          type="image/x-icon"/-->
+	<!--ice:outputStyle href="/xmlhttp/css/rime/rime.css" /-->
+	<link href="/radicador-web/css/rime.css" rel="stylesheet"
+		type="text/css" />
+	<link href="/radicador-web/design/css/structure.css" rel="stylesheet"
+		type="text/css" />
+	<link href="/radicador-web/design/css/layoutPrincipal.css"
+		rel="stylesheet" type="text/css" />
+	<script language="javascript"
+		src="/radicador-web/design/js/AC_RunActiveContent.js"></script>
+</h:head>
+
+<h:body styleClass="ice-skin-rime">
+	<ice:form id="main">
+		<table class="mainTable_css" align="center" border="0" cellpadding="0"
+			cellspacing="0">
+			<tbody>
+				<tr>
+					<td class="header_css" colspan="3">
+						<div class="dateControl_css">
+							<ice:outputText value="#{session.lastAccessedTime}">
+								<f:convertDateTime dateStyle="full" timeZone="EST" type="date" />
+							</ice:outputText>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="leftUp_shadow"></td>
+					<td class="up_shadow"></td>
+					<td class="rightUp_shadow"></td>
+				</tr>
+				<tr>
+					<td class="left_shadow"></td>
+					<td class="mainContent">
+					<ice:panelGroup
+							styleClass="header_pnl_est_css">
+							<script language="javascript">
+								if (AC_FL_RunContent == 0) {
+									alert("Esta página requiere el archivo AC_RunActiveContent.js.");
+								} else {
+									AC_FL_RunContent(
+											'codebase',
+											'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+											'width',
+											'955',
+											'height',
+											'140',
+											'src',
+											'/radicador-web/design/swf/bannerForms',
+											'quality',
+											'high',
+											'pluginspage',
+											'http://www.macromedia.com/go/getflashplayer',
+											'align',
+											'middle',
+											'play',
+											'true',
+											'loop',
+											'true',
+											'scale',
+											'showall',
+											'wmode',
+											'opaque',
+											'devicefont',
+											'false',
+											'id',
+											'design/swf/bannerForms',
+											'bgcolor',
+											'#ffffff',
+											'name',
+											'design/swf/bannerForms',
+											'menu',
+											'true',
+											'allowFullScreen',
+											'false',
+											'allowScriptAccess',
+											'sameDomain',
+											'movie',
+											'/radicador-web/design/swf/bannerForms',
+											'salign', ''); //end AC code
+								}
+							</script>
+							<!-- dt_propuestaActive_btn -->
+							<ice:panelGroup styleClass="tabs_btn_css">
+								<ice:commandLink
+									actionListener="#{controller.doDatosSolicitantePressed}"
+									styleClass="#{controller.currentTab == 1? 'dt_solicitanteActive_btn':'dt_solicitante_btn'}">
+									<ice:panelGroup styleClass="btn_css">
+										<ice:outputLabel value="Datos del Solicitante" />
+									</ice:panelGroup>
+								</ice:commandLink>
+								<ice:commandLink
+									actionListener="#{controller.doDatosSolicitudPressed}"
+									styleClass="#{controller.currentTab == 2? 'dt_propuestaActive_btn':'dt_propuesta_btn'}">
+									<ice:panelGroup styleClass="btn_css">
+										<ice:outputLabel value="Datos de la Solicitud" />
+									</ice:panelGroup>
+								</ice:commandLink>
+								<ice:commandLink
+									actionListener="#{controller.doDatosLocalizacionPressed}"
+									styleClass="#{controller.currentTab == 3? 'dt_localizacionActive_btn':'dt_localizacion_btn'}">
+									<ice:panelGroup styleClass="btn_css">
+										<ice:outputLabel value="Datos del Localización" />
+									</ice:panelGroup>
+								</ice:commandLink>
+							</ice:panelGroup>
+							<div class="icePnlGrp buttons_btn_css" id="main:j_idt22">
+								<a class="iceCmdLnk closeSession_css"><img alt=""
+									class="iceGphImg"
+									src="/radicador-web/design/images/header/buttons/cerrar_sesion_btn_css.gif"
+									title="Cerrar Sesión" /></a><a class="iceCmdLnk closeSession_css"><img
+									alt="" class="iceGphImg"
+									src="/radicador-web/design/images/header/buttons/ayuda_btn_css.gif"
+									title="Ayuda" /></a><a class="iceCmdLnk closeSession_css"><img
+									alt="" class="iceGphImg"
+									src="/radicador-web/design/images/header/buttons/inicio_btn_css.gif"
+									title="Inicio/" /></a>
+							</div>
+						</ice:panelGroup> <ice:panelGroup styleClass="body_pnl_est_css">
+							<ice:panelGroup styleClass="title_css">
+								<ice:outputText value="Propuestas de Contratos de Concesión" />
+							</ice:panelGroup>
+							<ui:insert name="body" />
+							<ice:panelGroup>
+								<ice:panelGroup>
+									<fieldset>
+										<ice:panelGroup styleClass="pnlBtn_css">
+											<center>
+												<input style="" class="iceCmdBtn" id="main:j_idt606"
+													name="main:j_idt606" onblur="setFocus('');"
+													onfocus="setFocus(this.id);" title="&lt;&lt; Anterior"
+													value="&lt;&lt; Anterior" type="submit" /><input style=""
+													class="iceCmdBtn" id="main:j_idt607" name="main:j_idt607"
+													onblur="setFocus('');"
+													onclick="iceSubmit(form,this,event);return false;"
+													onfocus="setFocus(this.id);" title="Guardar"
+													value="Guardar" type="submit" /><input style=""
+													class="iceCmdBtn" id="main:j_idt608" name="main:j_idt608"
+													onblur="setFocus('');" onfocus="setFocus(this.id);"
+													title="Cancelar" value="Cancelar" type="submit" /><input
+													style="" class="iceCmdBtn" id="main:j_idt609"
+													name="main:j_idt609" onblur="setFocus('');"
+													onfocus="setFocus(this.id);" title="Siguiente &gt;&gt;"
+													value="Siguiente &gt;&gt;" type="submit" />
+											</center>
+										</ice:panelGroup>
+									</fieldset>
+									<ice:panelGroup styleClass="pnlBtn_css">
+										<input style="" class="iceCmdBtn" id="main:j_idt613"
+											name="main:j_idt613" onblur="setFocus('');"
+											onfocus="setFocus(this.id);" value="Radicar" type="submit" />
+									</ice:panelGroup>
+								</ice:panelGroup>
+							</ice:panelGroup>
+						</ice:panelGroup></td>
+					<td class="right_shadow"></td>
+				</tr>
+				<tr>
+					<td class="leftDown_shadow"></td>
+					<td class="down_shadow"></td>
+					<td class="rightDown_shadow"></td>
+				</tr>
+				<tr>
+					<td class="foot_css" colspan="3"><img
+						src="/radicador-web/design/images/layout/linksInstitucionales.png"
+						usemap="#Map" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="icePnlCnf" id="main:closeConfirmPanel"
+			style="display: none;">
+			<table cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td class="icePnlCnfHdr" id="main:closeConfirmPanel-handle"><span
+							id="main:closeConfirmPanel-title">Confirmar Cierre de
+								Sesión</span></td>
+					</tr>
+					<tr>
+						<td class="icePnlCnfBody" id="main:closeConfirmPanel-message"><span>Perderá
+								la información ingresada en el formulario actual sino no ha
+								guardado previamente. ¿Desea Continuar?</span></td>
+					</tr>
+					<tr>
+						<td class="icePnlCnfBtns"><input style=""
+							id="main:closeConfirmPanel-accept"
+							onclick="Ice.PanelConfirmation.current.accept();return false;"
+							value="Aceptar" type="submit" /><input style=""
+							id="main:closeConfirmPanel-cancel"
+							onclick="Ice.PanelConfirmation.current.cancel();return false;"
+							value="Cancelar" type="submit" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="icePnlCnf" id="main:nextConfirmPanel"
+			style="display: none;">
+			<table cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td class="icePnlCnfHdr" id="main:nextConfirmPanel-handle"><span
+							id="main:nextConfirmPanel-title">Confirmar Navegación</span></td>
+					</tr>
+					<tr>
+						<td class="icePnlCnfBody" id="main:nextConfirmPanel-message"><span>Si
+								ya guardo pulse aceptar, de lo contrario el sistema no guardará
+								la información del actual formulario.</span></td>
+					</tr>
+					<tr>
+						<td class="icePnlCnfBtns"><input style=""
+							id="main:nextConfirmPanel-accept"
+							onclick="Ice.PanelConfirmation.current.accept();return false;"
+							value="Aceptar" type="submit" /><input style=""
+							id="main:nextConfirmPanel-cancel"
+							onclick="Ice.PanelConfirmation.current.cancel();return false;"
+							value="Cancelar" type="submit" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="icePnlCnf" id="main:radicarConfirmPanel"
+			style="display: none;">
+			<table cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td class="icePnlCnfHdr" id="main:radicarConfirmPanel-handle"><span
+							id="main:radicarConfirmPanel-title">Confirmar Radicación</span></td>
+					</tr>
+					<tr>
+						<td class="icePnlCnfBody" id="main:radicarConfirmPanel-message"><span>Recuerde
+								que al finalizar el proceso de Radicación no podrá utilizar
+								nuevamente su número de PIN. ¿Desea continuar?</span></td>
+					</tr>
+					<tr>
+						<td class="icePnlCnfBtns"><input style=""
+							id="main:radicarConfirmPanel-accept"
+							onclick="Ice.PanelConfirmation.current.accept();return false;"
+							value="Aceptar" type="submit" /><input style=""
+							id="main:radicarConfirmPanel-cancel"
+							onclick="Ice.PanelConfirmation.current.cancel();return false;"
+							value="Cancelar" type="submit" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</ice:form>
+	<map id="Map" name="Map">
+		<area coords="368,-1,462,26" href="#" shape="rect" />
+		<area coords="275,-1,369,26" href="http://www.contratos.gov.co/"
+			shape="rect" />
+		<area coords="182,0,276,27" href="http://horalegal.sic.gov.co/"
+			shape="rect" />
+		<area coords="82,0,183,25"
+			href="http://www.minproteccionsocial.gov.co" shape="rect" />
+		<area coords="-1,-2,81,23" href="http://www.gobiernoenlinea.gov.co"
+			shape="rect" />
+	</map>
+</h:body>
+</html>

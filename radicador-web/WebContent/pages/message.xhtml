@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ice:panelGroup>
+	<!-- ice:panelPopup id="messagesPopup" draggable="false" modal="true" rendered="#{message.messageRendered}" autoCentre="true">
+	
+		<f:facet name="header">
+			<ice:panelGroup styleClass="popupHeaderWrapper">
+				<ice:outputText	value="#{msg['page.message.popup.header.titulo']}" styleClass="popupHeaderText" />
+				<ice:commandButton type="button" actionListener="#{message.close}" styleClass="cancelShort_css" title="Cerrar" alt="Cerrar" immediate="true" />
+			</ice:panelGroup>
+		</f:facet>
+		
+		<f:facet name="body">
+		
+			<ice:panelGroup>
+				
+				<ice:panelGrid style="padding-top:15px;padding-bottom:15px;padding-right:30px;padding-left:30px;"  >
+					<ice:messages globalOnly="true" errorClass="iceMsgError" showSummary="true" />
+				</ice:panelGrid>				
+				
+				<ice:panelGroup styleClass="pnlBtn_css">
+					<center>
+						<ice:commandButton value="#{msg['page.button.cerrar']}" actionListener="#{message.close}"/>					
+					</center>
+				</ice:panelGroup>
+			</ice:panelGroup>
+		</f:facet>
+		
+	</ice:panelPopup-->
+	<fieldset>
+		<legend>
+			<ice:outputText value="#{msg['page.message.popup.header.titulo']}" />
+		</legend>
+		<ice:panelGroup>
+			<ice:panelGrid
+				style="padding-top:15px;padding-bottom:15px;padding-right:30px;padding-left:30px;">
+				<ice:messages globalOnly="true" errorClass="iceMsgError"
+					showSummary="true" />
+			</ice:panelGrid>
+		</ice:panelGroup>
+	</fieldset>
+</ice:panelGroup>
+</html>

@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ice:panelGroup>
+	
+	
+	<ice:panelPopup id="procesandoPopup" draggable="false" modal="true" rendered="#{procesing.procesandoRendered}" autoCentre="true">
+		
+		
+		<f:facet name="header">
+			<ice:panelGroup styleClass="popupHeaderWrapper">
+				<ice:outputText	value="#{msg['page.procesandoPanelPopup.title']}" styleClass="popupHeaderText" />
+			</ice:panelGroup>
+		</f:facet>
+		
+		
+		<f:facet name="body">
+		
+			<ice:panelGroup>
+				
+				<ice:panelGrid style="padding-top:5px;padding-bottom:5px;padding-right:10px;padding-left:10px;" >
+					<ice:panelGroup>
+						
+						<ice:panelGrid columns="2" style="border-spacing:15px;">
+							<ice:graphicImage url="/css/css-images/connect_active.gif" />
+							<ice:outputText	value="#{msg['page.procesandoPanelPopup.data']}" />
+							<ice:commandButton id="radicar" visible="false" action="#{procesing.radicar}"/>
+						</ice:panelGrid>													
+						
+					</ice:panelGroup>
+				</ice:panelGrid>
+			</ice:panelGroup>
+		</f:facet>
+	</ice:panelPopup>
+	
+</ice:panelGroup>
+</html>

@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ice:panelGroup styleClass="header_pnl_est_css">
+	<img src="#{facesContext.externalContext.requestContextPath}/design/images/banner2.png" style="padding-left: 0px;"/>
+	<ice:panelGroup styleClass="tabs_btn_css">
+		<ice:commandLink actionListener="#{radweb.doDatosSolicitantePressed}"
+			partialSubmit="true"
+			styleClass="#{radweb.currentTab == 1? 'dt_solicitanteActive_btn':'dt_solicitante_btn'}">
+			<ice:panelGroup styleClass="btn_css">
+				<ice:outputLabel value="Datos del Solicitante" />
+			</ice:panelGroup>
+		</ice:commandLink>
+		<ice:commandLink 
+			partialSubmit="true"
+			actionListener="#{radweb.doDatosSolicitudPressed}"
+			styleClass="#{radweb.currentTab == 2? 'dt_propuestaActive_btn':'dt_propuesta_btn'}">
+			<ice:panelGroup styleClass="btn_css">
+				<ice:outputLabel value="Datos de la Solicitud" />
+			</ice:panelGroup>
+		</ice:commandLink>
+		<ice:commandLink 
+			partialSubmit="true"
+			actionListener="#{radweb.doDatosLocalizacionPressed}"
+			styleClass="#{radweb.currentTab == 3? 'dt_localizacionActive_btn':'dt_localizacion_btn'}">
+			<ice:panelGroup styleClass="btn_css">
+				<ice:outputLabel value="Datos de Localización" />
+			</ice:panelGroup>
+		</ice:commandLink>
+	</ice:panelGroup>
+	<ice:panelGroup styleClass="buttons_btn_css">
+		<ice:commandLink action="#{radweb.logout}"
+			styleClass="closeSession_css">
+			<ice:graphicImage title="Cerrar Sesión"
+				url="/design/images/header/buttons/cerrar_sesion_btn_css.gif" />
+		</ice:commandLink>
+		<a class="iceCmdLnk closeSession_css"><img alt=""
+			class="iceGphImg"
+			src="#{facesContext.externalContext.requestContextPath}/design/images/header/buttons/ayuda_btn_css.gif"
+			title="Ayuda" /></a>
+		<a class="iceCmdLnk closeSession_css"><img alt=""
+			class="iceGphImg"
+			src="#{facesContext.externalContext.requestContextPath}/design/images/header/buttons/inicio_btn_css.gif"
+			title="Inicio" /></a>
+	</ice:panelGroup>
+</ice:panelGroup>
+</html>

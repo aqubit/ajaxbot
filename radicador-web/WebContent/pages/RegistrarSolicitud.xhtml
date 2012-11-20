@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ice:panelGroup
+	rendered="#{radweb.domModalidad eq '1' or radweb.domModalidad eq '6' or radweb.domModalidad eq '7'}">
+	<fieldset>
+		<legend>
+			<ice:outputText
+				value="#{msg['page.title.minerales']} #{msg['page.form.requerid']}" />
+		</legend>
+		<ice:panelGroup styleClass="form_2_pnl_css"
+			rendered="#{not registrarSolicitud.readOnlyMineral}">
+			<ul>
+				<li><ice:outputText value="#{msg['page.form.mineral']}" /> <ice:panelGroup>
+						<ice:selectOneMenu value="#{registrarSolicitud.codigoMineral}">
+							<f:selectItem itemValue=""
+								itemLabel="#{msg['page.form.seleccione']}" />
+							<f:selectItems
+								value="#{registrarSolicitud.mineralesMap.entrySet()}"
+								var="entry" itemValue="#{entry.key}" itemLabel="#{entry.value}" />
+						</ice:selectOneMenu>
+						<ice:commandButton title="#{msg['page.button.add']}"
+							styleClass="addShort_css"
+							actionListener="#{registrarSolicitud.addMineralActionListener}"
+							partialSubmit="true"
+							rendered="#{not registrarSolicitud.readOnlyMineral}" />
+					</ice:panelGroup></li>
+			</ul>
+		</ice:panelGroup>
+		<ice:panelGroup styleClass="scroll_pnl_css">
+			<ice:dataTable id="tableMineral" var="mineral"
+				value="#{registrarSolicitud.minerales}" resizable="true" rows="5"
+				columnWidths="90%,10%" width="100%">
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.minerales']}" />
+					</f:facet>
+					<ice:outputText value="#{mineral.nombre}" />
+				</ice:column>
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.delete']}" />
+					</f:facet>
+					<center>
+						<ice:commandButton
+							action="#{registrarSolicitud.deleteMineralActionListener}"
+							title="#{msg['page.table.header.delete']}"
+							styleClass="deleteShort_css"
+							rendered="#{registrarSolicitud.renderedDeleteMineral}">
+							<f:setPropertyActionListener
+								target="#{registrarSolicitud.codigoMineral}"
+								value="#{mineral.id}" />
+						</ice:commandButton>
+					</center>
+				</ice:column>
+			</ice:dataTable>
+			<center>
+				<ice:dataPaginator for="tableMineral" paginator="true" fastStep="3"
+					paginatorMaxPages="3"
+					rendered="#{registrarSolicitud.renderedPaginatorMineral}">
+					<f:facet name="first">
+						<ice:graphicImage url="/css/css-images/arrow-first.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.firstPage']}" />
+					</f:facet>
+					<f:facet name="last">
+						<ice:graphicImage url="/css/css-images/arrow-last.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.lastPage']}" />
+					</f:facet>
+					<f:facet name="previous">
+						<ice:graphicImage url="/css/css-images/arrow-previous.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.previousPage']}" />
+					</f:facet>
+					<f:facet name="next">
+						<ice:graphicImage url="/css/css-images/arrow-next.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.nextPage']}" />
+					</f:facet>
+					<f:facet name="fastforward">
+						<ice:graphicImage url="/css/css-images/arrow-ff.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.fastForward']}" />
+					</f:facet>
+					<f:facet name="fastrewind">
+						<ice:graphicImage url="/css/css-images/arrow-fr.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.fastBackward']}" />
+					</f:facet>
+				</ice:dataPaginator>
+			</center>
+		</ice:panelGroup>
+		<ice:inputHidden id="tblValMineral"
+			validatorMessage="#{msg['page.validation.missing.data.tbl']}"
+			rendered="#{registrarSolicitud.isEmptyTableMinerales}">
+			<f:validator validatorId="BasicValidator"
+				disabled="#{!param['VALIDATE']}" />
+		</ice:inputHidden>
+		<ice:message for="tblValMineral" />
+	</fieldset>
+</ice:panelGroup>
+<ice:panelGroup
+	rendered="#{radweb.domModalidad eq '1' or radweb.domModalidad eq '6' or radweb.domModalidad eq '7'}">
+	<fieldset>
+		<legend>
+			<ice:outputText
+				value="#{msg['page.title.autor']} #{msg['page.form.requerid']}" />
+		</legend>
+		<ice:panelGroup styleClass="form_3_pnl_css">
+			<ul>
+				<li><ice:outputText
+						value="#{msg['page.form.matricula']} #{msg['page.form.requerid']}" />
+					<ice:inputText id="matriculaProfesional"
+						value="#{registrarSolicitud.autorPlano.matriculaProfesional}">
+						<f:validator validatorId="BasicValidator"
+							disabled="#{!param['VALIDATE']}" />
+					</ice:inputText> <ice:message for="matriculaProfesional" /></li>
+				<li><ice:outputText
+						value="#{msg['page.form.nombres']} #{msg['page.form.requerid']}" />
+					<ice:inputText id="nombres"
+						value="#{registrarSolicitud.autorPlano.nombres}">
+						<f:validator validatorId="BasicValidator"
+							disabled="#{!param['VALIDATE']}" />
+					</ice:inputText> <ice:message for="nombres" /></li>
+				<li><ice:outputText
+						value="#{msg['page.form.primerApellido']} #{msg['page.form.requerid']}" />
+					<ice:inputText id="primerApellido"
+						value="#{registrarSolicitud.autorPlano.primerApellido}">
+						<f:validator validatorId="BasicValidator"
+							disabled="#{!param['VALIDATE']}" />
+					</ice:inputText> <ice:message for="primerApellido" /></li>
+				<li><ice:outputText value="#{msg['page.form.segundoApellido']}" />
+					<ice:inputText id="segundoApellido"
+						value="#{registrarSolicitud.autorPlano.segundoApellido}" /> <ice:message
+						for="segundoApellido" /></li>
+				<li><ice:outputText
+						value="#{msg['page.form.profesion']} #{msg['page.form.requerid']}" />
+					<ice:selectOneMenu id="domProfesion"
+						value="#{registrarSolicitud.autorPlano.profesion}">
+						<f:selectItem itemValue=""
+							itemLabel="#{msg['page.form.seleccione']}" />
+						<f:selectItems
+							value="#{registrarSolicitud.profesionMap.entrySet()}" var="entry"
+							itemValue="#{entry.key}" itemLabel="#{entry.value}" />
+						<f:validator validatorId="BasicValidator"
+							disabled="#{!param['VALIDATE']}" />
+					</ice:selectOneMenu> <ice:message for="domProfesion" /></li>
+			</ul>
+		</ice:panelGroup>
+	</fieldset>
+</ice:panelGroup>
+<ice:panelGroup
+	rendered="#{radweb.domModalidad eq '1' or radweb.domModalidad eq '6' or radweb.domModalidad eq '7'}">
+	<fieldset>
+		<legend>
+			<ice:outputText
+				value="#{msg['page.title.autoridades']} #{msg['page.form.requerid']}" />
+		</legend>
+		<ice:panelGroup styleClass="form_2_pnl_css">
+			<ul>
+				<li><ice:outputText
+						value="#{msg['page.form.autoridadAmbiental']}" /> <ice:panelGroup>
+						<ice:selectOneMenu
+							value="#{registrarSolicitud.codigoAutoAmbiental}">
+							<f:selectItem itemValue=""
+								itemLabel="#{msg['page.form.seleccione']}" />
+							<f:selectItems
+								value="#{registrarSolicitud.autoridadAmbientalMap.entrySet()}"
+								var="entry" itemValue="#{entry.key}" itemLabel="#{entry.value}" />
+						</ice:selectOneMenu>
+						<ice:commandButton title="#{msg['page.button.add']}"
+							styleClass="addShort_css"
+							actionListener="#{registrarSolicitud.addAutoAmbientalActionListener}"
+							partialSubmit="true" />
+					</ice:panelGroup></li>
+			</ul>
+		</ice:panelGroup>
+		<ice:panelGroup styleClass="scroll_pnl_css">
+			<ice:dataTable id="tableAutoridad" var="autoAmbiental"
+				value="#{registrarSolicitud.autoAmbientales}" resizable="true"
+				rows="5" columnWidths="90%,10%" width="100%">
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.autoridades']}" />
+					</f:facet>
+					<ice:outputText value="#{autoAmbiental.nombre}" />
+				</ice:column>
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.delete']}" />
+					</f:facet>
+					<center>
+						<ice:commandButton
+							action="#{registrarSolicitud.deleteAutoAmbientalActionListener}"
+							title="#{msg['page.table.header.delete']}"
+							styleClass="deleteShort_css"
+							rendered="#{registrarSolicitud.renderedDeleteAutoAmbiental}">
+							<f:setPropertyActionListener
+								target="#{registrarSolicitud.codigoAutoAmbiental}"
+								value="#{autoAmbiental.id}" />
+						</ice:commandButton>
+					</center>
+				</ice:column>
+			</ice:dataTable>
+			<center>
+				<ice:dataPaginator for="tableAutoridad" paginator="true"
+					fastStep="3" paginatorMaxPages="3"
+					rendered="#{registrarSolicitud.renderedPaginatorAutoAmbiental}">
+					<f:facet name="first">
+						<ice:graphicImage url="/css/css-images/arrow-first.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.firstPage']}" />
+					</f:facet>
+					<f:facet name="last">
+						<ice:graphicImage url="/css/css-images/arrow-last.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.lastPage']}" />
+					</f:facet>
+					<f:facet name="previous">
+						<ice:graphicImage url="/css/css-images/arrow-previous.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.previousPage']}" />
+					</f:facet>
+					<f:facet name="next">
+						<ice:graphicImage url="/css/css-images/arrow-next.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.nextPage']}" />
+					</f:facet>
+					<f:facet name="fastforward">
+						<ice:graphicImage url="/css/css-images/arrow-ff.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.fastForward']}" />
+					</f:facet>
+					<f:facet name="fastrewind">
+						<ice:graphicImage url="/css/css-images/arrow-fr.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.fastBackward']}" />
+					</f:facet>
+				</ice:dataPaginator>
+			</center>
+		</ice:panelGroup>
+		<ice:inputHidden id="tblValAutoridad"
+			validatorMessage="#{msg['page.validation.missing.data.tbl']}"
+			rendered="#{registrarSolicitud.isEmptyTableAutoridades}">
+			<f:validator validatorId="BasicValidator"
+				disabled="#{!param['VALIDATE']}" />
+		</ice:inputHidden>
+		<ice:message for="tblValAutoridad" />
+	</fieldset>
+</ice:panelGroup>
+
+
+<ice:panelGroup
+	rendered="#{radweb.domModalidad eq '1' or radweb.domModalidad eq '6' or radweb.domModalidad eq '7'}">
+	<fieldset>
+		<legend>
+			<ice:outputText
+				value="#{msg['page.title.grupoEtnico']} #{msg['page.form.requerid']}" />
+		</legend>
+		<ice:panelGroup styleClass="form_2_pnl_css">
+			<ul>
+				<li class="colspan_2"><ice:outputText
+						value="#{msg['page.message.grupoEtnico']}" /> <ice:selectOneRadio
+						value="#{registrarSolicitud.seleccionGrupoEtnico}"
+						partialSubmit="true">
+						<f:selectItems value="#{registrarSolicitud.booleanoList}" />
+					</ice:selectOneRadio></li>
+				<ice:panelGroup
+					rendered="#{registrarSolicitud.seleccionGrupoEtnico eq '1'}">
+					<li><ice:outputText value="#{msg['page.form.grupoEtnico']}" />
+						<ice:panelGroup>
+							<ice:selectOneMenu
+								value="#{registrarSolicitud.codigoGrupoEtnico}">
+								<f:selectItem itemValue=""
+									itemLabel="#{msg['page.form.seleccione']}" />
+								<f:selectItems
+									value="#{registrarSolicitud.grupoEtnicoMap.entrySet()}"
+									var="entry" itemValue="#{entry.key}" itemLabel="#{entry.value}" />
+							</ice:selectOneMenu>
+							<ice:commandButton title="#{msg['page.button.add']}"
+								styleClass="addShort_css"
+								actionListener="#{registrarSolicitud.addGrupoEtnicoActionListener}"
+								partialSubmit="true" />
+						</ice:panelGroup></li>
+				</ice:panelGroup>
+			</ul>
+		</ice:panelGroup>
+		<ice:panelGroup
+			rendered="#{registrarSolicitud.seleccionGrupoEtnico eq '1'}"
+			styleClass="scroll_pnl_css">
+			<ice:dataTable id="tableGrupoEtnico" var="grupoEtnico"
+				value="#{registrarSolicitud.grupoEtnicos}" resizable="true" rows="5"
+				columnWidths="90%,10%" width="100%">
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.gruposEtnicos']}" />
+					</f:facet>
+					<ice:outputText value="#{grupoEtnico.nombre}" />
+				</ice:column>
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.delete']}" />
+					</f:facet>
+					<center>
+						<ice:commandButton
+							action="#{registrarSolicitud.deleteGrupoEtnicoActionListener}"
+							title="#{msg['page.table.header.delete']}"
+							styleClass="deleteShort_css"
+							rendered="#{registrarSolicitud.renderedDeleteGrupoEtnico}">
+							<f:setPropertyActionListener
+								target="#{registrarSolicitud.codigoGrupoEtnico}"
+								value="#{grupoEtnico.id}" />
+						</ice:commandButton>
+					</center>
+				</ice:column>
+			</ice:dataTable>
+			<center>
+				<ice:dataPaginator for="tableGrupoEtnico" paginator="true"
+					fastStep="3" paginatorMaxPages="3"
+					rendered="#{registrarSolicitud.renderedPaginatorGrupoEtnico}">
+					<f:facet name="first">
+						<ice:graphicImage url="/css/css-images/arrow-first.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.firstPage']}" />
+					</f:facet>
+					<f:facet name="last">
+						<ice:graphicImage url="/css/css-images/arrow-last.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.lastPage']}" />
+					</f:facet>
+					<f:facet name="previous">
+						<ice:graphicImage url="/css/css-images/arrow-previous.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.previousPage']}" />
+					</f:facet>
+					<f:facet name="next">
+						<ice:graphicImage url="/css/css-images/arrow-next.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.nextPage']}" />
+					</f:facet>
+					<f:facet name="fastforward">
+						<ice:graphicImage url="/css/css-images/arrow-ff.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.fastForward']}" />
+					</f:facet>
+					<f:facet name="fastrewind">
+						<ice:graphicImage url="/css/css-images/arrow-fr.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.fastBackward']}" />
+					</f:facet>
+				</ice:dataPaginator>
+			</center>
+		</ice:panelGroup>
+		<ice:inputHidden id="tblValEtnicos"
+			validatorMessage="#{msg['page.validation.missing.data.tbl']}"
+			rendered="#{registrarSolicitud.seleccionGrupoEtnico eq '1' and registrarSolicitud.isEmptyTableEtnicos}">
+			<f:validator validatorId="BasicValidator"
+				disabled="#{!param['VALIDATE']}" />
+		</ice:inputHidden>
+		<ice:message for="tblValEtnicos" />
+	</fieldset>
+</ice:panelGroup>
+<ice:panelGroup
+	rendered="#{radweb.domModalidad eq '1' or radweb.domModalidad eq '6' or radweb.domModalidad eq '7'}">
+	<fieldset>
+		<legend>
+			<ice:outputText
+				value="#{msg['page.title.zona']} #{msg['page.form.requerid']}" />
+		</legend>
+		<ice:panelGroup styleClass="form_2_pnl_css">
+			<ul>
+				<li class="colspan_2"><ice:outputText
+						value="#{msg['page.message.zonaRestringida']}" /> <ice:selectOneRadio
+						value="#{registrarSolicitud.seleccionMineriaRestringida}"
+						partialSubmit="true">
+						<f:selectItems value="#{registrarSolicitud.booleanoList}" />
+					</ice:selectOneRadio></li>
+				<ice:panelGroup id="panelMineriaRestringida"
+					rendered="#{registrarSolicitud.seleccionMineriaRestringida eq '1'}">
+					<li class="rowspan_3 colspan_2"><ice:outputText
+							value="#{msg['page.message.tipoZonaRestringida']}" /> <ice:selectManyCheckbox
+							value="#{registrarSolicitud.mineriaRestringida}"
+							valueChangeListener="registrarSolicitud.onChangeMineriaRestringida"
+							partialSubmit="true" immediate="true" layout="pageDirection">
+							<f:selectItem itemLabel="Areas de construcciones rurales"
+								itemValue="2" />
+							<f:selectItem
+								itemLabel="Areas ocupadas por una obra pública o adscritas a un servicio público"
+								itemValue="5" />
+							<f:selectItem itemLabel="Dentro del perímetro urbano"
+								itemValue="1" />
+							<f:selectItem
+								itemLabel="Zonas de interés arqueológico, histórico o cultural"
+								itemValue="3" />
+							<f:selectItem
+								itemLabel="Zonas de playas de bajo mar, trayectos fluviales servidos por empresas públicas de transporte"
+								itemValue="4" />
+						</ice:selectManyCheckbox></li>
+				</ice:panelGroup>
+				<ice:inputHidden id="valMineriaRestringida"
+					validatorMessage="#{msg['page.validation.missing.data.dropdown']}"
+					rendered="#{registrarSolicitud.seleccionMineriaRestringida eq '1' and registrarSolicitud.isEmptyMineriaRestringida}">
+					<f:validator validatorId="BasicValidator"
+						disabled="#{!param['VALIDATE']}" />
+				</ice:inputHidden>
+				<ice:message for="valMineriaRestringida" />
+			</ul>
+		</ice:panelGroup>
+	</fieldset>
+</ice:panelGroup>
+<ice:panelGroup rendered="true">
+	<fieldset>
+		<legend>
+			<ice:outputText value="#{msg['page.title.ubicacion']}" />
+		</legend>
+		<ice:panelGroup styleClass="form_2_pnl_css">
+			<ul>
+				<li class="colspan_2"><ice:outputText
+						value="#{msg['page.message.ubicacion']}" /> <ice:selectOneRadio
+						value="#{registrarSolicitud.seleccionZonasMineras}"
+						partialSubmit="true">
+						<f:selectItems value="#{registrarSolicitud.booleanoList}" />
+					</ice:selectOneRadio></li>
+				<ice:panelGroup id="panelZonasMineras"
+					rendered="#{registrarSolicitud.seleccionZonasMineras eq '1'}">
+					<li><ice:outputText value="#{msg['page.message.ubicada']}" />
+						<ice:selectOneMenu id="zonaminera_dropdown"
+							value="#{registrarSolicitud.ubicacionArea}">
+							<f:selectItem itemValue=""
+								itemLabel="#{msg['page.form.seleccione']}" />
+							<f:selectItems
+								value="#{registrarSolicitud.comunidadesMap.entrySet()}"
+								var="entry" itemValue="#{entry.key}" itemLabel="#{entry.value}" />
+							<f:validator validatorId="BasicValidator"
+								disabled="#{!param['VALIDATE']}" />
+						</ice:selectOneMenu> <ice:message for="zonaminera_dropdown" /></li>
+				</ice:panelGroup>
+			</ul>
+		</ice:panelGroup>
+		<ice:message for="panelZonasMineras" />
+	</fieldset>
+</ice:panelGroup>
+<ice:panelGroup rendered="#{radweb.domModalidad eq '6'}">
+	<fieldset>
+		<legend>
+			<ice:outputText
+				value="#{msg['page.title.estimativo']} #{msg['page.form.requerid']}" />
+		</legend>
+		<ice:panelGroup id="estimativos" styleClass="form_3_pnl_css">
+			<ul>
+				<li class="colspan_3"><ice:outputText
+						value="#{msg['page.form.recursosPropios']}" /></li>
+				<li><ice:outputText
+						value="#{msg['page.form.anio']} 1 #{msg['page.form.requerid']}" />
+					<ice:inputText id="recursoPropioAno1"
+						value="#{registrarSolicitud.radSoliEstanual.recursoPropioAno1}"
+						partialSubmit="true" maxlength="22"
+						converter="javax.faces.BigDecimal">
+					</ice:inputText> <ice:message for="recursoPropioAno1" /></li>
+				<li><ice:outputText value="#{msg['page.form.anio']} 2" /> <ice:inputText
+						id="recursoPropioAno2"
+						value="#{registrarSolicitud.radSoliEstanual.recursoPropioAno2}"
+						converter="javax.faces.BigDecimal" partialSubmit="true"
+						maxlength="22">
+					</ice:inputText> <ice:message for="recursoPropioAno2" /></li>
+				<li><ice:outputText value="#{msg['page.form.anio']} 3" /> <ice:inputText
+						id="recursoPropioAno3"
+						value="#{registrarSolicitud.radSoliEstanual.recursoPropioAno3}"
+						converter="javax.faces.BigDecimal" partialSubmit="true"
+						maxlength="22">
+					</ice:inputText> <ice:message for="recursoPropioAno3" /></li>
+				<li class="colspan_3"><ice:outputText
+						value="#{msg['page.form.otrasFuentes']}" /></li>
+				<li><ice:outputText
+						value="#{msg['page.form.anio']} 1 #{msg['page.form.requerid']}" />
+					<ice:inputText id="otrasFuentesAno1"
+						value="#{registrarSolicitud.radSoliEstanual.otrasFuentesAno1}"
+						converter="javax.faces.BigDecimal" partialSubmit="true"
+						maxlength="22">
+					</ice:inputText> <ice:message for="otrasFuentesAno1" /></li>
+				<li><ice:outputText value="#{msg['page.form.anio']} 2" /> <ice:inputText
+						id="otrasFuentesAno2"
+						value="#{registrarSolicitud.radSoliEstanual.otrasFuentesAno2}"
+						converter="javax.faces.BigDecimal" partialSubmit="true"
+						maxlength="22">
+					</ice:inputText> <ice:message for="otrasFuentesAno2" /></li>
+				<li><ice:outputText value="#{msg['page.form.anio']} 3" /> <ice:inputText
+						id="otrasFuentesAno3"
+						value="#{registrarSolicitud.radSoliEstanual.otrasFuentesAno3}"
+						converter="javax.faces.BigDecimal" partialSubmit="true"
+						maxlength="22"></ice:inputText> <ice:message
+						for="otrasFuentesAno3" /></li>
+				<li class="colspan_3"><ice:outputText
+						value="#{msg['page.form.total']}" /></li>
+				<li><ice:outputText value="#{msg['page.form.anio']} 1" /> <ice:inputText
+						readonly="true"
+						validatorMessage="#{msg['page.validation.missing.anio']} 1 debe ser mayor de 0"
+						value="#{registrarSolicitud.radSoliEstanual.recursoPropioAno1 + registrarSolicitud.radSoliEstanual.otrasFuentesAno1}"
+						maxlength="22">
+						<f:validator validatorId="MoneyValidator"
+							disabled="#{!param['VALIDATE']}" />
+					</ice:inputText></li>
+				<li><ice:outputText value="#{msg['page.form.anio']} 2" /> <ice:inputText
+						readonly="true"
+						validatorMessage="#{msg['page.validation.missing.anio']} 2 debe ser mayor de 0"
+						value="#{registrarSolicitud.radSoliEstanual.recursoPropioAno2 + registrarSolicitud.radSoliEstanual.otrasFuentesAno2}"
+						maxlength="22">
+						<f:validator validatorId="MoneyValidator"
+							disabled="#{!param['VALIDATE']}" />
+					</ice:inputText></li>
+				<li><ice:outputText value="#{msg['page.form.anio']} 3" /> <ice:inputText
+						readonly="true"
+						validatorMessage="#{msg['page.validation.missing.anio']} 3 debe ser mayor de 0"
+						value="#{registrarSolicitud.radSoliEstanual.recursoPropioAno3 + registrarSolicitud.radSoliEstanual.otrasFuentesAno3}"
+						maxlength="22">
+						<f:validator validatorId="MoneyValidator"
+							disabled="#{!param['VALIDATE']}" />
+					</ice:inputText></li>
+			</ul>
+			<ice:message for="estimativos" />
+		</ice:panelGroup>
+	</fieldset>
+</ice:panelGroup>
+<ice:panelGroup rendered="#{radweb.domModalidad eq '6'}">
+	<fieldset>
+		<legend>
+			<ice:outputText
+				value="#{msg['page.title.explotacion']} #{msg['page.form.requerid']}" />
+		</legend>
+		<ice:panelGroup styleClass="form_3_pnl_css">
+			<ul>
+				<li class="colspan_3"><ice:outputText
+						value="#{msg['page.message.explotacionMinera']}" /> <ice:selectOneRadio
+						value="#{registrarSolicitud.seleccionExplotacion}"
+						partialSubmit="true">
+						<f:selectItems value="#{registrarSolicitud.booleanoList}" />
+					</ice:selectOneRadio></li>
+				<ice:panelGroup
+					rendered="#{registrarSolicitud.seleccionExplotacion eq '1'}">
+					<li class="colspan_3 rowspan"><ice:outputText
+							value="#{msg['page.message.metodologia']}" /></li>
+					<li class="colspan_3"><ice:outputText
+							value="#{msg['page.form.metodologia']} #{msg['page.form.requerid']}" />
+						<ice:inputTextarea id="metodologia" rows="10" maxlength="200"
+							value="#{registrarSolicitud.metodologia}">
+							<f:validator validatorId="BasicValidator"
+								disabled="#{!param['VALIDATE']}" />
+						</ice:inputTextarea></li>
+					<li class="colspan_3"><ice:message for="metodologia" /></li>
+					<li class="rowspan"><ice:outputText
+							value="#{msg['page.form.archivoMetodologia']}" /></li>
+					<li class="colspan_2">
+						<table style="width: 500px">
+							<tr>
+								<td><ace:fileEntry id="fileEntryCompMetodologia"
+										label="#{msg['page.button.loadFileMetodologia']}"
+										style="float:left" useOriginalFilename="true"
+										absolutePath="#{registrarSolicitud.repositorioDocumentosPath}"
+										fileEntryListener="#{registrarSolicitud.uploadFileMetodologia}"
+										maxFileCount="1" useSessionSubdir="false">
+										<h:commandButton
+											title="#{msg['page.button.loadFileMetodologia']}"
+											styleClass="iceCmdBtn fileCoordShort_css" />
+									</ace:fileEntry></td>
+								<td><ice:outputText
+										value="#{msg['page.button.loadFileMetodologia']}" /></td>
+							</tr>
+						</table>
+					</li>
+					<li class="rowspan"></li>
+				</ice:panelGroup>
+			</ul>
+		</ice:panelGroup>
+		<ice:panelGroup styleClass="scroll_pnl_css"
+			rendered="#{registrarSolicitud.seleccionExplotacion eq '1'}">
+			<table width="100%" border="0">
+				<tr>
+					<th class="iceDatTblColHdr1"
+						style="border-right: solid 1px #CCCCCC; border-left: solid 1px #CCCCCC">
+						<ice:outputText value="#{msg['page.form.documentoMetodologia']}" />
+					</th>
+					<th class="iceDatTblColHdr1"
+						style="border-right: solid 1px #CCCCCC; border-left: solid 1px #CCCCCC">
+						<ice:outputText value="#{msg['page.table.header.delete']}" />
+					</th>
+				</tr>
+				<tr>
+					<td class="iceDatTblCol2"
+						style="border-right: solid 1px #CCCCCC; border-left: solid 1px #CCCCCC">
+						<ice:outputText value="#{registrarSolicitud.anexoMetodologia}" />
+					</td>
+					<td class="iceDatTblCol2"
+						style="border-right: solid 1px #CCCCCC; border-left: solid 1px #CCCCCC">
+						<ice:commandButton title="#{msg['page.table.header.delete']}"
+							styleClass="deleteShort_css"
+							actionListener="#{registrarSolicitud.deleteFileMetodogia}"
+							rendered="#{registrarSolicitud.renderedDeleteDocumento}" />
+					</td>
+				</tr>
+			</table>
+		</ice:panelGroup>
+		<ice:panelGroup styleClass="form_3_pnl_css"
+			rendered="#{registrarSolicitud.seleccionExplotacion eq '1'}">
+			<ul>
+				<li class="colspan_3 rowspan"><ice:outputText
+						value="#{msg['page.form.ingresoCoordenadas']}" /></li>
+				<li class="colspan_3 rowspan"><ice:selectOneRadio
+						value="#{registrarSolicitud.selectedGroup}" partialSubmit="true"
+						layout="lineDirection"
+						valueChangeListener="#{registrarSolicitud.onSourceTypeValueChange}">
+						<f:selectItem itemLabel="Manual" itemValue="groupOne" />
+						<f:selectItem itemLabel="Con Archivo" itemValue="groupTwo" />
+					</ice:selectOneRadio></li>
+			</ul>
+		</ice:panelGroup>
+		<ice:panelStack selectedPanel="#{registrarSolicitud.selectedGroup}">
+			<ice:panelGroup id="groupOne" styleClass="form_3_pnl_css"
+				rendered="#{registrarSolicitud.seleccionExplotacion eq '1'}">
+				<ul>
+					<li><ice:outputText
+							value="#{msg['page.form.x']} #{msg['page.form.requerid']}" /> <ice:inputText
+							id="xUbi" value="#{registrarSolicitud.coordenada.coordenadaX}"
+							maxlength="7" converter="javax.faces.Long"
+							converterMessage="#{msg['javax.faces.converter.LongConverter.coordenadas']}" />
+						<ice:message for="xUbi" showDetail="true" showSummary="false" /></li>
+					<li class="rowspan"><ice:outputText
+							value="#{msg['page.form.y']} #{msg['page.form.requerid']}" /> <ice:panelGroup>
+							<ice:inputText id="yUbi"
+								value="#{registrarSolicitud.coordenada.coordenadaY}"
+								maxlength="7"
+								onclick="javascript:document.getElementById(this.id).select();"
+								converter="javax.faces.Long"
+								converterMessage="#{msg['javax.faces.converter.LongConverter.coordenadas']}" />
+							<ice:message for="yUbi" showDetail="true" showSummary="false" />
+							<ice:commandButton title="#{msg['page.button.add']}"
+								action="#{registrarSolicitud.addCoordenada}"
+								styleClass="addShort_css" />
+						</ice:panelGroup></li>
+				</ul>
+			</ice:panelGroup>
+			<ice:panelGroup id="groupTwo" styleClass="form_3_pnl_css"
+				rendered="#{registrarSolicitud.seleccionExplotacion eq '1'}">
+				<ul>
+					<li class="colspan_2"><ice:outputText />
+						<table style="width: 500px">
+							<tr>
+								<td><ace:fileEntry id="fileEntryCompCoord"
+										label="#{msg['page.button.loadFile']}" style="float:left"
+										useOriginalFilename="true"
+										absolutePath="#{registrarSolicitud.repositorioDocumentosTmpPath}"
+										fileEntryListener="#{registrarSolicitud.uploadFileCoordenada}"
+										maxFileCount="1">
+										<h:commandButton title="#{msg['page.button.loadFile']}"
+											styleClass="iceCmdBtn fileCoordShort_css" />
+									</ace:fileEntry></td>
+								<td><ice:outputText value="#{msg['page.button.loadFile']}" />
+								</td>
+							</tr>
+						</table></li>
+				</ul>
+			</ice:panelGroup>
+		</ice:panelStack>
+		<ice:panelGroup>
+		</ice:panelGroup>
+		<ice:panelGroup styleClass="scroll_pnl_css"
+			rendered="#{registrarSolicitud.seleccionExplotacion eq '1'}">
+			<ice:dataTable varStatus="status" id="tableSolicitudCoordenadaUbi"
+				var="coordenada" resizable="true"
+				value="#{registrarSolicitud.radCoordenadas}" rows="5" width="100%"
+				columnWidths="10%, 40%, 40%, 10%">
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.explotacion']}" />
+					</f:facet>
+					<ice:outputText value="#{status.index + 1}"
+						rendered="#{coordenada.coordenadaX != null}" />
+				</ice:column>
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.x']}" />
+					</f:facet>
+					<ice:outputText value="#{coordenada.coordenadaX}" />
+				</ice:column>
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.y']}" />
+					</f:facet>
+					<ice:outputText value="#{coordenada.coordenadaY}" />
+				</ice:column>
+				<ice:column>
+					<f:facet name="header">
+						<ice:outputText value="#{msg['page.table.header.delete']}" />
+					</f:facet>
+					<ice:commandButton title="#{msg['page.table.header.delete']}"
+						styleClass="deleteShort_css"
+						action="#{registrarSolicitud.deleteCoordenadaActionListener}"
+						rendered="#{registrarSolicitud.renderedDeleteCoordenada}">
+						<f:setPropertyActionListener
+							target="#{registrarSolicitud.coordenada}" value="#{coordenada}" />
+					</ice:commandButton>
+				</ice:column>
+			</ice:dataTable>
+			<ice:panelGroup>
+				<ice:inputHidden id="tblValCoordenadas"
+					validatorMessage="#{msg['page.validation.missing.data.tbl']}"
+					rendered="#{registrarSolicitud.isEmptyTableCoordenadas}">
+					<f:validator validatorId="BasicValidator"
+						disabled="#{!param['VALIDATE']}" />
+				</ice:inputHidden>
+				<ice:message for="tblValCoordenadas" />
+			</ice:panelGroup>
+			<center>
+				<ice:dataPaginator for="tableSolicitudCoordenadaUbi"
+					paginator="true" fastStep="3" paginatorMaxPages="3"
+					rendered="#{registrarSolicitud.renderedPaginatorCoordenada}">
+					<f:facet name="first">
+						<ice:graphicImage url="/css/css-images/arrow-first.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.firstPage']}" />
+					</f:facet>
+					<f:facet name="last">
+						<ice:graphicImage url="/css/css-images/arrow-last.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.lastPage']}" />
+					</f:facet>
+					<f:facet name="previous">
+						<ice:graphicImage url="/css/css-images/arrow-previous.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.previousPage']}" />
+					</f:facet>
+					<f:facet name="next">
+						<ice:graphicImage url="/css/css-images/arrow-next.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.nextPage']}" />
+					</f:facet>
+					<f:facet name="fastforward">
+						<ice:graphicImage url="/css/css-images/arrow-ff.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.fastForward']}" />
+					</f:facet>
+					<f:facet name="fastrewind">
+						<ice:graphicImage url="/css/css-images/arrow-fr.gif"
+							style="border:none;"
+							title="#{msg['page.table.paginator.fastBackward']}" />
+					</f:facet>
+				</ice:dataPaginator>
+			</center>
+		</ice:panelGroup>
+	</fieldset>
+</ice:panelGroup>
+<ice:panelGroup rendered="#{radweb.domModalidad eq '6'}">
+	<fieldset>
+		<legend>
+			<ice:outputText
+				value="#{msg['page.title.terminos']} #{msg['page.form.requerid']}" />
+		</legend>
+		<ice:panelGroup styleClass="form_3_pnl_css">
+			<ul>
+				<li class="colspan_3"><ice:selectBooleanCheckbox
+						id="terminosRef" value="#{registrarSolicitud.terminosReferencia}"
+						validatorMessage="#{msg['page.validation.missing.data.terminos']}">
+						<f:validator validatorId="BooleanValidator"
+							disabled="#{!param['VALIDATE']}" />
+					</ice:selectBooleanCheckbox> <ice:outputText value="#{msg['page.message.terminosReferencia']}" />
+				</li>
+			</ul>
+			<ice:inputHidden id="formValidation"
+				validatorMessage="#{msg['page.validation.missing.data.solicitud']}"
+				rendered="#{registrarSolicitud.isIncompleteForm}">
+				<f:validator validatorId="FormValidator"
+					disabled="#{!param['VALIDATE']}" />
+			</ice:inputHidden>
+			<ice:message for="terminosRef" />
+		</ice:panelGroup>
+	</fieldset>
+</ice:panelGroup>
+<fieldset>
+	<ice:panelGroup styleClass="pnlBtn_css">
+		<center>
+			<ice:commandButton title="#{msg['page.button.prev']}"
+				value="#{msg['page.button.prev']}"
+				action="#{radweb.visualizarSolicitante}" partialSubmit="true"
+				panelConfirmation="nextConfirmPanel" />
+			<ice:commandButton title="#{msg['page.button.save']}"
+				value="#{msg['page.button.save']}"
+				actionListener="#{radweb.prepareSave}">
+				<f:param name="VALIDATE" value="true" />
+				<f:param name="SHOW_GLOBAL_MESSAGE" value="true" />
+			</ice:commandButton>
+			<ice:commandButton title="#{msg['page.button.cancel']}"
+				value="#{msg['page.button.cancel']}"
+				action="#{registrarSolicitud.cancel}" partialSubmit="true"
+				panelConfirmation="nextConfirmPanel" />
+			<ice:commandButton title="#{msg['page.button.next']}"
+				value="#{msg['page.button.next']}"
+				action="#{radweb.visualizarLocalizacion}" partialSubmit="true"
+				panelConfirmation="nextConfirmPanel" />
+		</center>
+	</ice:panelGroup>
+</fieldset>
+<ice:panelGroup styleClass="pnlBtn_css">
+	<ice:commandButton value="#{msg['page.button.radicar']}"
+		action="#{radweb.prepareRadicar}"
+		panelConfirmation="radicarConfirmPanel">
+		<f:param name="SHOW_GLOBAL_MESSAGE" value="true" />
+	</ice:commandButton>
+</ice:panelGroup>
+</html>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<fieldset>
+	<legend>
+		<ice:outputText value="#{msg['page.title.personaNaturalExtranjera']}" />
+	</legend>
+	<ice:panelGroup styleClass="pnlBtn_css">
+		<ice:commandButton value="#{msg['page.button.addNatural']}"
+			actionListener="#{registrarSolicitante.addNaturalAction}"
+			partialSubmit="true" />
+	</ice:panelGroup>
+	<ice:panelGroup styleClass="scroll_pnl_css">
+		<ice:dataTable id="tableNatural" var="personaNatural"
+			value="#{registrarSolicitante.tableNatural}" width="100%"
+			resizable="true" rows="5">
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.tipoPersona']}" />
+				</f:facet>
+				<ice:outputText value="#{personaNatural.tipoPersona}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.tipoDocumento']}" />
+				</f:facet>
+				<ice:outputText value="#{personaNatural.tipoDocumento}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.numeroDocumento']}" />
+				</f:facet>
+				<ice:outputText value="#{personaNatural.numeroDocumento}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.nombres']}" />
+				</f:facet>
+				<ice:outputText value="#{personaNatural.nombres}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.primerApellido']}" />
+				</f:facet>
+				<ice:outputText value="#{personaNatural.primerApellido}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.segundoApellido']}" />
+				</f:facet>
+				<ice:outputText value="#{personaNatural.segundoApellido}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.fechaNacimiento']}" />
+				</f:facet>
+				<ice:outputText value="#{personaNatural.fechaNacimiento}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</ice:outputText>
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.numeroCelular']}" />
+				</f:facet>
+				<ice:outputText value="#{personaNatural.celular}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.correo']}" />
+				</f:facet>
+				<ice:outputText value="#{personaNatural.correoElectronico}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.edit']}" />
+				</f:facet>
+				<center>
+					<ice:commandButton
+						action="#{registrarSolicitante.editNaturalAction}"
+						title="#{msg['page.table.header.edit']}"
+						styleClass="editShort_css"
+						rendered="#{registrarSolicitante.renderedEditNatural}">
+						<f:setPropertyActionListener
+							target="#{registrarSolicitante.personaNatural}"
+							value="#{personaNatural}" />
+					</ice:commandButton>
+				</center>
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.delete']}" />
+				</f:facet>
+				<center>
+					<ice:commandButton
+						action="#{registrarSolicitante.deleteNaturalAction}"
+						title="#{msg['page.table.header.delete']}"
+						styleClass="deleteShort_css"
+						rendered="#{registrarSolicitante.renderedDeleteNatural}">
+						<f:setPropertyActionListener
+							target="#{registrarSolicitante.personaNatural}"
+							value="#{personaNatural}" />
+					</ice:commandButton>
+				</center>
+			</ice:column>
+		</ice:dataTable>
+		<center>
+			<ice:dataPaginator for="tableNatural" paginator="true" fastStep="3"
+				paginatorMaxPages="3"
+				rendered="#{registrarSolicitante.renderedPaginatorNatural}">
+				<f:facet name="first">
+					<ice:graphicImage url="/css/css-images/arrow-first.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.firstPage']}" />
+				</f:facet>
+				<f:facet name="last">
+					<ice:graphicImage url="/css/css-images/arrow-last.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.lastPage']}" />
+				</f:facet>
+				<f:facet name="previous">
+					<ice:graphicImage url="/css/css-images/arrow-previous.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.previousPage']}" />
+				</f:facet>
+				<f:facet name="next">
+					<ice:graphicImage url="/css/css-images/arrow-next.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.nextPage']}" />
+				</f:facet>
+				<f:facet name="fastforward">
+					<ice:graphicImage url="/css/css-images/arrow-ff.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.fastForward']}" />
+				</f:facet>
+				<f:facet name="fastrewind">
+					<ice:graphicImage url="/css/css-images/arrow-fr.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.fastBackward']}" />
+				</f:facet>
+			</ice:dataPaginator>
+		</center>
+	</ice:panelGroup>
+</fieldset>
+<fieldset>
+	<legend>
+		<ice:outputText value="#{msg['page.title.personaJuridicaExtranjera']}" />
+	</legend>
+	<ice:panelGroup styleClass="pnlBtn_css">
+		<ice:commandButton value="#{msg['page.button.addJuridica']}"
+			action="#{registrarSolicitante.addJuridicaAction}"
+			partialSubmit="true" />
+	</ice:panelGroup>
+	<ice:panelGroup styleClass="scroll_pnl_css">
+		<ice:dataTable id="tableJuridica" var="personaJuridica"
+			value="#{registrarSolicitante.tableJuridica}" width="100%"
+			resizable="true" rows="5">
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.tipoPersona']}" />
+				</f:facet>
+				<ice:outputText value="#{personaJuridica.tipoPersona}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.tipoDocumento']}" />
+				</f:facet>
+				<ice:outputText value="#{personaJuridica.tipoDocumento}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.numeroDocumento']}" />
+				</f:facet>
+				<ice:outputText value="#{personaJuridica.numeroDocumento}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.razonSocial']}" />
+				</f:facet>
+				<ice:outputText value="#{personaJuridica.razonSocial}" />
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.edit']}" />
+				</f:facet>
+				<center>
+					<ice:commandButton
+						action="#{registrarSolicitante.editJuridicaAction}"
+						title="#{msg['page.table.header.edit']}"
+						styleClass="editShort_css">
+						<f:setPropertyActionListener
+							target="#{registrarSolicitante.personaJuridica}"
+							value="#{personaJuridica}" />
+					</ice:commandButton>
+				</center>
+			</ice:column>
+			<ice:column>
+				<f:facet name="header">
+					<ice:outputText value="#{msg['page.table.header.delete']}" />
+				</f:facet>
+				<center>
+					<ice:commandButton
+						action="#{registrarSolicitante.deleteJuridicaAction}"
+						title="#{msg['page.table.header.delete']}"
+						styleClass="deleteShort_css"
+						rendered="#{personaJuridica.renderedDeleteJuridica}">
+						<f:setPropertyActionListener
+							target="#{registrarSolicitante.personaJuridica}"
+							value="#{personaJuridica}" />
+					</ice:commandButton>
+				</center>
+			</ice:column>
+		</ice:dataTable>
+		<center>
+			<ice:dataPaginator for="tableJuridica" paginator="true" fastStep="3"
+				paginatorMaxPages="3"
+				rendered="#{registrarSolicitante.renderedPaginatorJuridica}">
+				<f:facet name="first">
+					<ice:graphicImage url="/css/css-images/arrow-first.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.firstPage']}" />
+				</f:facet>
+				<f:facet name="last">
+					<ice:graphicImage url="/css/css-images/arrow-last.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.lastPage']}" />
+				</f:facet>
+				<f:facet name="previous">
+					<ice:graphicImage url="/css/css-images/arrow-previous.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.previousPage']}" />
+				</f:facet>
+				<f:facet name="next">
+					<ice:graphicImage url="/css/css-images/arrow-next.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.nextPage']}" />
+				</f:facet>
+				<f:facet name="fastforward">
+					<ice:graphicImage url="/css/css-images/arrow-ff.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.fastForward']}" />
+				</f:facet>
+				<f:facet name="fastrewind">
+					<ice:graphicImage url="/css/css-images/arrow-fr.gif"
+						style="border:none;"
+						title="#{msg['page.table.paginator.fastBackward']}" />
+				</f:facet>
+			</ice:dataPaginator>
+		</center>
+		<ice:panelGroup>
+			<ice:inputHidden id="valTableJuridica"
+				validatorMessage="#{msg['page.validation.missing.data.solicitante.incomplete']}"
+				rendered="#{registrarSolicitante.tableJuridica[0].razonSocial == null}">
+				<f:validator validatorId="BasicValidator"
+					disabled="#{!param['VALIDATE2']}" />
+			</ice:inputHidden>
+			<ice:message for="valTableJuridica" />
+			<ice:inputHidden id="valTableJuridica2"
+				validatorMessage="#{msg['page.validation.missing.data.solicitante.incomplete.resumen']}"
+				rendered="#{registrarSolicitante.tableJuridica[0].razonSocial == null}">
+				<f:validator validatorId="FormValidator"
+					disabled="#{!param['VALIDATE2']}" />
+			</ice:inputHidden>
+		</ice:panelGroup>
+	</ice:panelGroup>
+</fieldset>
+<fieldset>
+	<ice:panelGroup styleClass="pnlBtn_css">
+		<center>
+			<ice:commandButton title="#{msg['page.button.save']}"
+				value="#{msg['page.button.save']}" action="#{radweb.prepareSave}">
+				<f:param name="VALIDATE2" value="true" />
+				<f:param name="SHOW_GLOBAL_MESSAGE" value="true" />
+			</ice:commandButton>
+			<ice:commandButton title="#{msg['page.button.cancel']}"
+				value="#{msg['page.button.cancel']}"
+				action="#{registrarSolicitante.cancel}" partialSubmit="true"
+				panelConfirmation="nextConfirmPanel" />
+			<ice:commandButton title="#{msg['page.button.next']}"
+				value="#{msg['page.button.next']}"
+				action="#{radweb.visualizarSolicitud}" partialSubmit="true"
+				panelConfirmation="nextConfirmPanel" />
+		</center>
+	</ice:panelGroup>
+</fieldset>
+<ice:panelGroup styleClass="pnlBtn_css">
+	<ice:commandButton value="#{msg['page.button.radicar']}"
+		actionListener="#{radweb.prepareRadicar}"
+		panelConfirmation="radicarConfirmPanel">
+		<f:param name="SHOW_GLOBAL_MESSAGE" value="true" />
+	</ice:commandButton>
+</ice:panelGroup>
+<ui:include src="/pages/RegistrarPersonaNatural.xhtml" />
+<ui:include src="/pages/RegistrarPersonaJuridica.xhtml" />
+</html>

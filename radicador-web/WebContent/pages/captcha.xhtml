@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ice:panelGroup>
+	<ice:panelPopup id="captchaPopup" draggable="false" modal="true"
+		rendered="#{captcha.captchaRendered}" autoCentre="true">
+		<f:facet name="header">
+			<ice:panelGroup styleClass="popupHeaderWrapper">
+				<ice:outputText value="#{msg['page.captchaPanelPopup.title']}"
+					styleClass="popupHeaderText" />
+				<ice:commandButton type="button"
+					actionListener="#{captcha.cancelCaptcha}"
+					styleClass="cancelShort_css" title="Cerrar" alt="Cerrar"
+					immediate="true" />
+			</ice:panelGroup>
+		</f:facet>
+		<f:facet name="body">
+			<ice:panelGroup>
+				<ice:panelGrid
+					style="padding-top:5px;padding-bottom:5px;padding-right:10px;padding-left:10px;">
+					<ice:panelGroup>
+						<ice:panelGrid>
+							<ice:outputText value="#{msg['page.captchaPanelPopup.data']}" />
+						</ice:panelGrid>
+						<center>
+							<div class="captcha_css">
+								<div id="recaptcha_div"></div>
+								<!-- ******************************************************** -->
+								<script type="text/javascript">
+									function showRecaptcha(element) {
+										Recaptcha
+												.create(
+														"6LdSZNISAAAAAC3LiAH283M9M1wMFH0wma2BaiYH",
+														element,
+														{
+															lang : 'es',
+															theme : "white",
+															callback : Recaptcha.focus_response_field
+														});
+									}
+									showRecaptcha('recaptcha_div');
+								</script>
+								<!-- ******************************************************** -->
+							</div>
+						</center>
+						<ice:panelGrid>
+							<ice:outputText
+								value="#{msg['page.captchaPanelPopup.challengeFail']}"
+								rendered="#{captcha.challengeFailRendered}"
+								styleClass="iceMsgError" />
+						</ice:panelGrid>
+					</ice:panelGroup>
+				</ice:panelGrid>
+				<ice:panelGroup styleClass="pnlBtn_css">
+					<center>
+						<ice:commandButton value="#{msg['page.button.ok']}"
+							action="#{captcha.okPressedCaptcha}" partialSubmit="true">
+							<f:param name="SHOW_GLOBAL_MESSAGE" value="true" />
+						</ice:commandButton>
+						<ice:commandButton value="#{msg['page.button.cancel']}"
+							actionListener="#{captcha.cancelPressedCaptcha}"
+							partialSubmit="true" />
+					</center>
+				</ice:panelGroup>
+			</ice:panelGroup>
+		</f:facet>
+	</ice:panelPopup>
+</ice:panelGroup>
+</html>

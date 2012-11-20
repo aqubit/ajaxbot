@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<workflow>
+	<url>https://radicador.ingeominas.gov.co/radicador-web/</url>
+	<timeout>20</timeout>
+	<polling>10</polling>
+	<ajaxcondition>//*[@id='3767L6PL4KF9RWOSMI8U']</ajaxcondition>
+	<icefacesscript>if(!window.icebefore){function icebefore(){var _div = document.createElement('div');_div.id = '3767L6PL4KF9RWOSMI8U';document.body.appendChild(_div);}function iceafter() {	document.body.removeChild(document.getElementById('3767L6PL4KF9RWOSMI8U'));}ice.onAfterUpdate(iceafter);ice.onBeforeSubmit(icebefore);}</icefacesscript>
+	<scenarios>
+		<scenario id="Login" icefaces="false">
+			<actores>
+				<actor>
+					<type>select</type>
+					<xpath>//*[@id='tipoDocumento']</xpath>
+					<name>Login > Tipo de documento</name>
+					<data>NIT</data>
+					<column>1</column>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//*[@id='numeroDocumento']</xpath>
+					<name>Login > Número de documento</name>
+					<data>900392345-1</data>
+					<column>2</column>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//*[@id='j_password']</xpath>
+					<name>Login > PIN</name>
+					<column>3</column>
+				</actor>
+			</actores>
+		</scenario>
+		<scenario id="Radicación" icefaces="true">
+			<actores>
+				<!-- Paso1 -->
+				<actor doesSubmit="true">
+					<type>link</type>
+					<xpath>//a[descendant::label[starts-with(.,'Datos del Solicitante')]]</xpath>
+					<name>Datos del Solicitante > Link datos del solicitante</name>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//input[@title='Editar']</xpath>
+					<name>Datos del Solicitante > Botón editar persona jurídica</name>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Persona Jurídica')]/ancestor::fieldset//span[starts-with(.,'Razón Social')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Razón Social</name>
+					<data>OGX COLOMBIA</data>
+					<column>4</column>
+				</actor>							
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Domicilio')]/ancestor::fieldset//span[starts-with(.,'Tipo Domicilio')]/following-sibling::select</xpath>
+					<name>Datos del Solicitante > Tipo de domicilio</name>
+					<column>5</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Domicilio')]/ancestor::fieldset//span[starts-with(.,'Departamento')]/following-sibling::select</xpath>
+					<name>Datos del Solicitante > Departamento</name>
+					<column>6</column>
+				</actor>
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Domicilio')]/ancestor::fieldset//span[starts-with(.,'Municipio')]/following-sibling::select</xpath>
+					<name>Datos del Solicitante > Municipio</name>
+					<column>7</column>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Domicilio')]/ancestor::fieldset//span[starts-with(.,'Dirección')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Dirección</name>
+					<column>8</column>
+				</actor>							
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Domicilio')]/ancestor::fieldset//span[starts-with(.,'Teléfono')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Teléfono</name>
+					<column>9</column>
+				</actor>							
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Domicilio')]/ancestor::fieldset//span[starts-with(.,'Teléfono Alterno')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Teléfono Alterno</name>
+					<column>10</column>
+				</actor>							
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Representante Legal')]/ancestor::fieldset//span[starts-with(.,'Tipo de Persona')]/following-sibling::select</xpath>
+					<name>Datos del Solicitante > Representante Legal Tipo de persona</name>
+					<column>11</column>
+				</actor>
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Representante Legal')]/ancestor::fieldset//span[starts-with(.,'Tipo de Documento')]/following-sibling::select</xpath>
+					<name>Datos del Solicitante > Representante Legal Tipo de documento</name>
+					<column>12</column>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Representante Legal')]/ancestor::fieldset//span[starts-with(.,'Número de Documento')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Representante Legal Número de documento</name>
+					<column>13</column>
+				</actor>							
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Representante Legal')]/ancestor::fieldset//span[starts-with(.,'Nombre(s)')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Representante Legal Nombre(s)</name>
+					<column>14</column>
+				</actor>							
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Representante Legal')]/ancestor::fieldset//span[starts-with(.,'Primer Apellido')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Representante Legal Primer Apellido</name>
+					<column>15</column>
+				</actor>							
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Representante Legal')]/ancestor::fieldset//span[starts-with(.,'Segundo Apellido')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Representante Legal Segundo Apellido</name>
+					<column>16</column>
+				</actor>							
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Representante Legal')]/ancestor::fieldset//span[starts-with(.,'Número de Celular')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Representante Legal Celular</name>
+					<column>17</column>
+				</actor>							
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Representante Legal')]/ancestor::fieldset//span[starts-with(.,'Correo Electrónico')]/following-sibling::input</xpath>
+					<name>Datos del Solicitante > Representante Legal e-mail</name>
+					<column>18</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//*[@id='main:personaJuridicaPopup']//input[@value='Aceptar']</xpath>
+					<name>Datos del Solicitante > Botón Aceptar</name>
+				</actor>	
+				<!-- Paso2 -->	
+				<actor doesSubmit="true">
+					<type>link</type>
+					<xpath>//a[descendant::label[starts-with(.,'Datos de la Solicitud')]]</xpath>
+					<name>Datos de la Solicitud > Link datos de la solicitud</name>
+				</actor>
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Selección de Minerales')]/ancestor::fieldset//span[starts-with(.,'Mineral')]/following-sibling::div/select</xpath>
+					<name>Datos de la Solicitud > Mineral</name>
+					<column>19</column>
+					<multiple>true</multiple>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//span[starts-with(.,'Selección de Minerales')]/ancestor::fieldset//span[starts-with(.,'Mineral')]/following-sibling::div/input[@type='submit']</xpath>
+					<name>Datos de la Solicitud > Botón añadir mineral</name>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Autor del Plano')]/ancestor::fieldset//span[starts-with(.,'Matrícula Profesional')]/following-sibling::input[@type='text']</xpath>
+					<name>Datos de la Solicitud > Autor Plano - Matrícula profesional</name>
+					<column>20</column>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Autor del Plano')]/ancestor::fieldset//span[starts-with(.,'Nombre')]/following-sibling::input[@type='text']</xpath>
+					<name>Datos de la Solicitud > Autor Plano - Nombres</name>
+					<column>21</column>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Autor del Plano')]/ancestor::fieldset//span[starts-with(.,'Primer Apellido')]/following-sibling::input[@type='text']</xpath>
+					<name>Datos de la Solicitud > Autor Plano - Apellido 1</name>
+					<column>22</column>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Autor del Plano')]/ancestor::fieldset//span[starts-with(.,'Segundo Apellido')]/following-sibling::input[@type='text']</xpath>
+					<name>Datos de la Solicitud > Autor Plano - Apellido 2</name>
+					<column>23</column>
+				</actor>
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Autor del Plano')]/ancestor::fieldset//span[starts-with(.,'Profesión')]/following-sibling::select</xpath>
+					<name>Datos de la Solicitud > Autor Plano - Profesión</name>
+					<column>24</column>
+				</actor>
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Selección de Autoridades')]/ancestor::fieldset//span[starts-with(.,'Autoridad Ambiental')]/following-sibling::div/select</xpath>
+					<name>Datos de la Solicitud > Autoridad Ambiental</name>
+					<column>25</column>
+					<multiple>true</multiple>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//span[starts-with(.,'Selección de Autoridades')]/ancestor::fieldset//span[starts-with(.,'Autoridad Ambiental')]/following-sibling::div/input[@title='Adicionar']</xpath>
+					<name>Datos de la Solicitud > Botón Añadir Autoridad Ambiental</name>
+				</actor>
+				<actor doesSubmit="true">
+					<type>radio</type>
+					<xpath>//span[starts-with(.,'Existencia de Grupos Étnicos')]/ancestor::fieldset//label[starts-with(.,'No')]/preceding-sibling::input[@type='radio']</xpath>
+					<xpath2>//span[starts-with(.,'Existencia de Grupos Étnicos')]/ancestor::fieldset//label[starts-with(.,'Si')]/preceding-sibling::input[@type='radio']</xpath2>
+					<name>Datos de la Solicitud > Opción Grupo Étnico</name>
+					<column>26</column>
+				</actor>
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Existencia de Grupos Étnicos')]/ancestor::fieldset//span[starts-with(.,'Grupo')]/following-sibling::div/select</xpath>
+					<name>Datos de la Solicitud > Grupos Étnicos</name>
+					<column>27</column>
+					<multiple>true</multiple>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//span[starts-with(.,'Existencia de Grupos Étnicos')]/ancestor::fieldset//span[starts-with(.,'Grupo')]/following-sibling::div/input[@type='submit']</xpath>
+					<name>Datos de la Solicitud > Botón Añadir Grupo Étnico</name>
+				</actor>
+				<actor doesSubmit="true">
+					<type>radio</type>
+					<xpath>//span[starts-with(.,'Existencia de Zona de Minería Restringida')]/ancestor::fieldset//label[starts-with(.,'No')]/preceding-sibling::input[@type='radio']</xpath>
+					<xpath2>//span[starts-with(.,'Existencia de Zona de Minería Restringida')]/ancestor::fieldset//label[starts-with(.,'Si')]/preceding-sibling::input[@type='radio']</xpath2>
+					<name>Datos de la Solicitud > Opción Zona Minería Restringida</name>
+					<column>28</column>
+				</actor>
+				<actor doesSubmit="true"> 
+					<type>checkbox</type>
+					<xpath>(//span[starts-with(.,'Existencia de Zona de Minería Restringida')]/ancestor::fieldset//input[@type='checkbox'])[1]</xpath>
+					<name>Datos de la Solicitud > Opción 1 Zona de Minería Restringida</name>
+					<column>29</column>
+				</actor>
+				<actor doesSubmit="true"> 
+					<type>checkbox</type>
+					<xpath>(//span[starts-with(.,'Existencia de Zona de Minería Restringida')]/ancestor::fieldset//input[@type='checkbox'])[2]</xpath>
+					<name>Datos de la Solicitud > Opción 2 Zona de Minería Restringida</name>
+					<column>30</column>
+				</actor>
+				<actor doesSubmit="true"> 
+					<type>checkbox</type>
+					<xpath>(//span[starts-with(.,'Existencia de Zona de Minería Restringida')]/ancestor::fieldset//input[@type='checkbox'])[3]</xpath>
+					<name>Datos de la Solicitud > Opción 3 Zona de Minería Restringida</name>
+					<column>31</column>
+				</actor>
+				<actor doesSubmit="true"> 
+					<type>checkbox</type>
+					<xpath>(//span[starts-with(.,'Existencia de Zona de Minería Restringida')]/ancestor::fieldset//input[@type='checkbox'])[4]</xpath>
+					<name>Datos de la Solicitud > Opción 4 Zona de Minería Restringida</name>
+					<column>32</column>
+				</actor>
+				<actor doesSubmit="true"> 
+					<type>checkbox</type>
+					<xpath>(//span[starts-with(.,'Existencia de Zona de Minería Restringida')]/ancestor::fieldset//input[@type='checkbox'])[5]</xpath>
+					<name>Datos de la Solicitud > Opción 5 Zona de Minería Restringida</name>
+					<column>33</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>radio</type>
+					<xpath>//span[starts-with(.,'Existencia de Zonas Mineras de Comunidades Negras')]/ancestor::fieldset//label[starts-with(.,'No')]/preceding-sibling::input[@type='radio']</xpath>
+					<xpath2>//span[starts-with(.,'Existencia de Zonas Mineras de Comunidades Negras')]/ancestor::fieldset//label[starts-with(.,'Si')]/preceding-sibling::input[@type='radio']</xpath2>
+					<name>Datos de la Solicitud > Opción Comunidades Especiales</name>
+					<column>34</column>
+				</actor>
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Existencia de Zonas Mineras de Comunidades Negras')]/ancestor::fieldset//select</xpath>
+					<name>Datos de la Solicitud > Comunidad Especial</name>
+					<column>35</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>text</type>
+					<xpath>(//span[starts-with(.,'Estimativo de la Inversión')]/ancestor::fieldset//span[starts-with(.,'Año 1')]/following-sibling::input[@type='text'])[1]</xpath>
+					<name>Datos de la Solicitud > Recursos propios Año 1</name>
+					<column>36</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>text</type>
+					<xpath>(//span[starts-with(.,'Estimativo de la Inversión')]/ancestor::fieldset//span[starts-with(.,'Año 2')]/following-sibling::input[@type='text'])[1]</xpath>
+					<name>Datos de la Solicitud > Recursos propios Año 2</name>
+					<column>37</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>text</type>
+					<xpath>(//span[starts-with(.,'Estimativo de la Inversión')]/ancestor::fieldset//span[starts-with(.,'Año 3')]/following-sibling::input[@type='text'])[1]</xpath>
+					<name>Datos de la Solicitud > Recursos propios Año 3</name>
+					<column>38</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>radio</type>
+					<xpath>//span[starts-with(.,'Existencia de Explotación Minera')]/ancestor::fieldset//label[starts-with(.,'No')]/preceding-sibling::input[@type='radio']</xpath>
+					<xpath2>//span[starts-with(.,'Existencia de Explotación Minera')]/ancestor::fieldset//label[starts-with(.,'Si')]/preceding-sibling::input[@type='radio']</xpath2>
+					<name>Datos de la Solicitud > Opción Existencia Explotación Minera</name>
+					<column>39</column>
+				</actor>
+				<actor>
+					<type>text</type>
+					<xpath>//span[starts-with(.,'Existencia de Explotación Minera')]/ancestor::fieldset//span[starts-with(.,'Metodología')]/following-sibling::textarea</xpath>
+					<name>Datos de la Solicitud > Metodología</name>
+					<column>40</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>radio</type>
+					<xpath>//span[starts-with(.,'Existencia de Explotación Minera')]/ancestor::fieldset//label[starts-with(.,'Manual')]/preceding-sibling::input[@type='radio']</xpath>
+					<xpath2>//span[starts-with(.,'Existencia de Explotación Minera')]/ancestor::fieldset//label[starts-with(.,'Con Archivo')]/preceding-sibling::input[@type='radio']</xpath2>
+					<name>Datos de la Solicitud > Opción Archivo de Coordenadas</name>
+					<column>41</column>
+				</actor>				
+				<actor>
+					<type>file</type>
+					<xpath>(//span[starts-with(.,'Existencia de Explotación Minera')]/ancestor::fieldset//input[@type='file'])[2]</xpath>
+					<name>Datos de la Solicitud > Coordenadas</name>
+					<column>42</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//span[starts-with(.,'Existencia de Explotación Minera')]/ancestor::fieldset//input[starts-with(@title,'Cargar Archivo')]</xpath>
+					<name>Datos de la Solicitud > Botón Cargar Archivo de Coordenadas</name>
+				</actor>
+				<actor>
+					<type>checkbox</type>
+					<xpath>//span[starts-with(.,'Términos de Referencia')]/ancestor::fieldset//input[@type='checkbox']</xpath>
+					<name>Datos de la Solicitud > Checkbox Aceptar Terminos</name>
+				</actor>
+				<!-- Paso3 -->
+				<actor doesSubmit="true">
+					<type>link</type>
+					<xpath>//a[descendant::label[starts-with(.,'Datos de Localización')]]</xpath>
+					<name>Datos de Localización > Link Localización</name>
+				</actor>
+				<actor doesSubmit="true">
+					<type>select2</type>
+					<xpath>//span[starts-with(.,'Localización')]/ancestor::fieldset//span[starts-with(.,'Departamento')]/following-sibling::select</xpath>
+					<name>Datos de Localización > Departamento</name>
+					<column>43</column>
+				</actor>
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Localización')]/ancestor::fieldset//span[starts-with(.,'Municipio')]/following-sibling::div/select</xpath>
+					<name>Datos de Localización > Municipio</name>
+					<column>44</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//span[starts-with(.,'Localización')]/ancestor::fieldset//input[@title='Adicionar']</xpath>
+					<name>Datos de Localización > Botón Adicionar Municipio</name>
+				</actor>
+				<actor>
+					<type>select</type>
+					<xpath>//span[starts-with(.,'Ingreso Coordenadas Polígono')]/ancestor::fieldset//span[starts-with(.,'Plancha IGAC')]/following-sibling::select</xpath>
+					<name>Datos de Localización > Plancha IGAC</name>
+					<column>45</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>radio</type>
+					<xpath>//span[starts-with(.,'Ingreso Coordenadas Polígono')]/ancestor::fieldset//label[starts-with(.,'Manual')]/preceding-sibling::input[@type='radio']</xpath>
+					<xpath2>//span[starts-with(.,'Ingreso Coordenadas Polígono')]/ancestor::fieldset//label[starts-with(.,'Con Archivo')]/preceding-sibling::input[@type='radio']</xpath2>
+					<name>Datos de Localización > Opción Archivo de Coordenadas</name>
+					<column>46</column>
+				</actor>
+				<actor>
+					<type>file</type>
+					<xpath>//span[starts-with(.,'Ingreso Coordenadas Polígono')]/ancestor::fieldset//input[@type='file']</xpath>
+					<name>Datos de Localización > Coordenadas</name>
+					<column>47</column>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//span[starts-with(.,'Ingreso Coordenadas Polígono')]/ancestor::fieldset//input[starts-with(@title,'Cargar Archivo')]</xpath>
+					<name>Datos de Localización > Botón Cargar Archivo Coordenadas</name>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//input[starts-with(@value,'Visualizar')]</xpath>
+					<name>Datos de Localización > Botón visualizar</name>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//*[@id='main:modalPnlCloseBtn']</xpath>
+					<name>Datos de Localización > Botón Cerrar Mapa</name>
+				</actor>
+				<actor doesSubmit="true">
+					<type>button</type>
+					<xpath>//input[@value='Guardar']</xpath>
+					<name>Datos de Localización > Botón Guardar</name>
+				</actor>
+			</actores>
+		</scenario>		
+	</scenarios>
+</workflow>

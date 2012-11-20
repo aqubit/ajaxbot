@@ -1,0 +1,202 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:ice="http://www.icesoft.com/icefaces/component"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ice:panelGroup>
+	<ice:panelPopup id="personaNaturalPopup" draggable="false" modal="true"
+		rendered="#{registrarSolicitante.modalRenderedNatural}"
+		autoCentre="true">
+		<f:facet name="header">
+			<ice:panelGroup styleClass="popupHeaderWrapper">
+				<ice:outputText
+					value="#{msg['page.header.popup.registrarSolicitante']}"
+					styleClass="popupHeaderText" />
+				<ice:commandButton
+					actionListener="#{registrarSolicitante.cancelNaturalAction}"
+					styleClass="cancelShort_css" immediate="true" title="Cerrar"
+					alt="Cerrar" />
+			</ice:panelGroup>
+		</f:facet>
+		<f:facet name="body">
+			<ice:panelGroup scrollHeight="350px" scrollWidth="950px">
+				<fieldset>
+					<legend>
+						<ice:outputText value="#{msg['page.title.popup.personaNatural']}" />
+					</legend>
+					<ice:panelGroup styleClass="form_3_pnl_css">
+						<ul>
+							<li><ice:outputText for="personaNatural_domTipoPersona"
+									value="#{msg['page.form.tipoPersona']} #{msg['page.form.requerid']}" />
+								<ice:selectOneMenu id="personaNatural_domTipoPersona"
+									value="#{registrarSolicitante.personaNatural.domTipoPersona}"
+									disabled="#{registrarSolicitante.readOnlyPersonaNaturalPIN}">
+									<f:selectItems
+										value="#{registrarSolicitante.tipoPersonaNaturalMap.entrySet()}"
+										var="entry" itemValue="#{entry.key}"
+										itemLabel="#{entry.value}" />
+								</ice:selectOneMenu> <ice:message for="personaNatural_domTipoPersona" /></li>
+							<li><ice:outputText for="personaNatural_domTipoDocumento"
+									value="#{msg['page.form.tipoDocumento']} #{msg['page.form.requerid']}" />
+								<ice:selectOneMenu id="personaNatural_domTipoDocumento"
+									value="#{registrarSolicitante.personaNatural.domTipoDocumento}"
+									disabled="#{registrarSolicitante.readOnlyPersonaNaturalPIN}"
+									partialSubmit="true">
+									<f:selectItems
+										value="#{registrarSolicitante.tipoDocumentoNaturalMap.entrySet()}"
+										var="entry" itemValue="#{entry.key}"
+										itemLabel="#{entry.value}" />
+								</ice:selectOneMenu> <ice:message for="personaNatural_domTipoDocumento" /></li>
+							<li><ice:outputText for="personaNatural_numeroDocumento"
+									value="#{msg['page.form.numeroDocumento']} #{msg['page.form.requerid']}" />
+								<ice:inputText id="personaNatural_numeroDocumento"
+									value="#{registrarSolicitante.personaNatural.numeroDocumento}"
+									readonly="#{registrarSolicitante.readOnlyPersonaNaturalPIN}"
+									maxlength="20">
+									<f:validator validatorId="BasicValidator" disabled="#{!param['VALIDATE']}" />
+								</ice:inputText> <ice:message for="personaNatural_numeroDocumento" /></li>
+							<li><ice:outputText for="personaNatural_nombres"
+									value="#{msg['page.form.nombres']} #{msg['page.form.requerid']}" />
+								<ice:inputText id="personaNatural_nombres"
+									value="#{registrarSolicitante.personaNatural.nombres}"
+									readonly="#{registrarSolicitante.readOnly}" maxlength="100">
+									<f:validator validatorId="BasicValidator" disabled="#{!param['VALIDATE']}" />
+								</ice:inputText> <ice:message for="personaNatural_nombres" /></li>
+							<li><ice:outputText for="personaNatural_primerApellido"
+									value="#{msg['page.form.primerApellido']} #{msg['page.form.requerid']}" />
+								<ice:inputText id="personaNatural_primerApellido"
+									value="#{registrarSolicitante.personaNatural.primerApellido}"
+									maxlength="100" readonly="#{registrarSolicitante.readOnly}">
+									<f:validator validatorId="BasicValidator" disabled="#{!param['VALIDATE']}" />
+								</ice:inputText> <ice:message for="personaNatural_primerApellido" /></li>
+							<li><ice:outputText for="personaNatural_segundoApellido"
+									value="#{msg['page.form.segundoApellido']}" /> <ice:inputText
+									id="personaNatural_segundoApellido"
+									value="#{registrarSolicitante.personaNatural.segundoApellido}"
+									maxlength="100" readonly="#{registrarSolicitante.readOnly}"
+									immediate="true" /> <ice:message
+									for="personaNatural_segundoApellido" /></li>
+							<li><ice:outputText for="personaNatural_fechaNacimiento"
+									value="#{msg['page.form.fechaNacimiento']} #{msg['page.form.requerid']}" />
+								<ice:selectInputDate id="personaNatural_fechaNacimiento"
+									value="#{registrarSolicitante.personaNatural.fechaNacimiento}"
+									renderAsPopup="true"
+									readonly="#{registrarSolicitante.readOnly}"
+									renderYearAsDropdown="true" renderMonthAsDropdown="true"
+									converterMessage="#{msg['javax.faces.converter.DateTimeConverter.DATE_detail']}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+									<f:validator validatorId="BasicValidator" disabled="#{!param['VALIDATE']}" />
+								</ice:selectInputDate> <ice:message for="personaNatural_fechaNacimiento"
+									showDetail="true" showSummary="false" /></li>
+							<li><ice:outputText for="personaNatural_celular"
+									value="#{msg['page.form.numeroCelular']}" /> <ice:inputText
+									id="personaNatural_celular"
+									value="#{registrarSolicitante.personaNatural.celular}"
+									readonly="#{registrarSolicitante.readOnly}" maxlength="20"
+									immediate="true" /> <ice:message for="personaNatural_celular" /></li>
+							<li><ice:outputText for="personaNatural_correoElectronico"
+									value="#{msg['page.form.correo']}" /> <ice:inputText
+									id="personaNatural_correoElectronico"
+									value="#{registrarSolicitante.personaNatural.correoElectronico}"
+									readonly="#{registrarSolicitante.readOnly}" maxlength="255"
+									immediate="true" /> <ice:message
+									for="personaNatural_correoElectronico" /></li>
+						</ul>
+					</ice:panelGroup>
+				</fieldset>
+				<fieldset>
+					<legend>
+						<ice:outputText value="#{msg['page.title.popup.domicilio']}" />
+					</legend>
+					<ice:panelGroup styleClass="form_3_pnl_css">
+						<ul>
+							<li><ice:outputText for="personaNatural_domTipoDomicilio"
+									value="#{msg['page.table.header.tipoDomicilio']} #{msg['page.form.requerid']}" />
+								<ice:selectOneMenu id="personaNatural_domTipoDomicilio"
+									value="#{registrarSolicitante.personaNatural.radPersonaDomicilio.tipoDomicilio}">
+									<f:selectItem itemValue=""
+										itemLabel="#{msg['page.form.seleccione']}" />
+									<f:selectItems
+										value="#{registrarSolicitante.tipoDomicilioMap.entrySet()}"
+										var="entry" itemValue="#{entry.key}"
+										itemLabel="#{entry.value}" />
+									<f:validator validatorId="BasicValidator" disabled="#{!param['VALIDATE']}" />
+								</ice:selectOneMenu> <ice:message for="personaNatural_domTipoDomicilio" /></li>
+							<li><ice:outputText for="personaNatural_codigoDepartamento"
+									value="#{msg['page.table.header.departamento']} #{msg['page.form.requerid']}" />
+								<ice:selectOneMenu id="personaNatural_codigoDepartamento"
+									value="#{registrarSolicitante.personaNatural.radPersonaDomicilio.codigoDepartamentoNatural}"
+									valueChangeListener="#{registrarSolicitante.valueChangeDepartamentoNatural}"
+									partialSubmit="true">
+									<f:selectItem itemValue=""
+										itemLabel="#{msg['page.form.seleccione']}" />
+									<f:selectItems
+										value="#{registrarSolicitante.departamentoMap.entrySet()}"
+										var="entry" itemValue="#{entry.key}"
+										itemLabel="#{entry.value}" />
+									<f:validator validatorId="BasicValidator" disabled="#{!param['VALIDATE']}" />
+								</ice:selectOneMenu> <ice:message for="personaNatural_codigoDepartamento" /></li>
+							<li><ice:outputText for="personaNatural_codigoMunicipio"
+									value="#{msg['page.table.header.municipio']} #{msg['page.form.requerid']}" />
+								<ice:selectOneMenu id="personaNatural_codigoMunicipio"
+									value="#{registrarSolicitante.personaNatural.radPersonaDomicilio.codigoMunicipioNatural}"
+									valueChangeListener="#{registrarSolicitante.valueChangeMunicipioNatural}">
+									<f:selectItem itemValue=""
+										itemLabel="#{msg['page.form.seleccione']}" />
+									<f:selectItems
+										value="#{registrarSolicitante.municipioNaturalMap.entrySet()}"
+										var="entry" itemValue="#{entry.key}"
+										itemLabel="#{entry.value}" />
+									<f:validator validatorId="BasicValidator" disabled="#{!param['VALIDATE']}" />
+								</ice:selectOneMenu> <ice:message for="personaNatural_codigoMunicipio" /></li>
+							<li><ice:outputText for="personaNatural_direccion"
+									value="#{msg['page.table.header.direccion']} #{msg['page.form.requerid']}" />
+								<ice:inputText id="personaNatural_direccion"
+									value="#{registrarSolicitante.personaNatural.radPersonaDomicilio.direccion}"
+									maxlength="255">
+									<f:validator validatorId="BasicValidator" disabled="#{!param['VALIDATE']}" />
+								</ice:inputText> <ice:message for="personaNatural_direccion" /></li>
+							<li><ice:outputText for="personaNatural_telefono"
+									value="#{msg['page.table.header.telefono']} #{msg['page.form.requerid']}" />
+								<ice:inputText id="personaNatural_telefono"
+									value="#{registrarSolicitante.personaNatural.radPersonaDomicilio.telefono}"
+									maxlength="20">
+									<f:validator validatorId="BasicValidator" disabled="#{!param['VALIDATE']}" />
+								</ice:inputText> <ice:message for="personaNatural_telefono" /></li>
+							<li><ice:outputText for="personaNatural_telefonoAlterno"
+									value="#{msg['page.table.header.telefonoAlterno']}" /> <ice:inputText
+									id="personaNatural_telefonoAlterno"
+									value="#{registrarSolicitante.personaNatural.radPersonaDomicilio.telefonoAlterno}"
+									maxlength="20" /> <ice:message
+									for="personaNatural_telefonoAlterno" /></li>
+						</ul>
+					</ice:panelGroup>
+					<ice:panelGroup>
+						<ice:inputHidden id="personaNatural_solicitante" />
+						<ice:message for="personaNatural_solicitante" />
+					</ice:panelGroup>
+				</fieldset>
+				<ice:panelGroup styleClass="pnlBtn_css">
+					<center>
+						<ice:commandButton value="#{msg['page.button.ok']}"
+							actionListener="#{registrarSolicitante.confirmNaturalActionListener}"
+							partialSubmit="true">
+							<f:param name="VALIDATE" value="true" />
+						</ice:commandButton>
+						<ice:commandButton value="#{msg['page.button.cancel']}"
+							immediate="true"
+							actionListener="#{registrarSolicitante.cancelNaturalAction}"
+							partialSubmit="true" />
+					</center>
+				</ice:panelGroup>
+				<ice:panelConfirmation id="personaNaturalConfirmPanel"
+					title="#{msg['page.panelConfirmation.persona.title']}"
+					message="#{msg['page.panelConfirmation.persona.message']}"
+					draggable="true" acceptLabel="#{msg['page.button.ok']}"
+					cancelLabel="#{msg['page.button.cancel']}" />
+			</ice:panelGroup>
+		</f:facet>
+	</ice:panelPopup>
+</ice:panelGroup>
+</html>

@@ -1,0 +1,822 @@
+/******************************************************************************************/
+/******************************  ESTILOS PANEL FORMULARIO *********************************/
+.form_1_pnl_css fieldset,
+.form_2_pnl_css fieldset,
+.form_3_pnl_css fieldset,
+.form_4_pnl_css fieldset,
+.form_5_pnl_css fieldset{
+	border: solid 0px #FFFFFF;
+	
+}
+
+/*default*/
+/**** callBackPanel  *****/
+.pnlBtn_css
+{
+	float: left;
+	padding: 5px;
+	width: 96%;
+	background-repeat: no-repeat;
+	background-position: 0% 0%;
+	clear: both;
+	display: block;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.pnlBtn_css center .iceCmdBtn{
+	float: none;
+	
+}
+
+.form_1_cbp_css,.form_2_cbp_css,.form_3_cbp_css,.form_4_cbp_css,.form_5_cbp_css,
+	/******/ .form_1_pnl_css,.form_2_pnl_css,.form_3_pnl_css,.form_4_pnl_css,.form_5_pnl_css
+	{
+	float: left;
+	padding-bottom: 5px;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: 0% 0%;
+}
+
+.form_1_cbp_css,.form_1_pnl_css {
+	background-image: url(images/body/panels/form_1_pnl_css.gif);
+}
+
+.form_2_cbp_css,.form_2_pnl_css {
+	/*background-image: url(images/body/panels/form_2_pnl_css.gif);*/
+}
+
+.form_3_cbp_css,.form_3_pnl_css {
+	/*background-image: url(images/body/panels/form_3_pnl_css.gif);*/
+}
+
+.form_4_cbp_css,.form_4_pnl_css {
+	background-image: url(images/body/panels/form_4_pnl_css.gif);
+}
+
+.form_5_cbp_css,.form_5_pnl_css {
+	background-image: url(images/body/panels/form_4_pnl_css.gif);
+}
+
+/**** callBackPanel  *****/
+.scroll_pnl_css fieldset legend,.form_1_cbp_css fieldset legend,.form_2_cbp_css fieldset legend,.form_3_cbp_css fieldset legend,.form_4_cbp_css fieldset legend,.form_5_cbp_css fieldset legend,
+	/**/ .form_1_pnl_css fieldset legend,.form_2_pnl_css fieldset legend,.form_3_pnl_css fieldset legend,.form_4_pnl_css fieldset legend,.form_5_pnl_css fieldset legend,.scroll_size_pnl_css fieldset legend
+	{
+	color: #295C51;
+	padding-bottom: 3px;
+	font-size: 11px;
+	font-weight: bold;
+}
+/**********************************************************************************/
+/******************************  PANELES BG_MESSAGES ******************************/
+/**********************************************************************************/
+/**** callBackPanel  *****/
+.form_1_cbp_css fieldset,.form_2_cbp_css fieldset,.form_3_cbp_css fieldset,.form_4_cbp_css fieldset,.form_5_cbp_css fieldset,
+	/**/ .form_1_pnl_css fieldset,.form_2_pnl_css fieldset,.form_3_pnl_css fieldset,.form_4_pnl_css fieldset,.form_5_pnl_css fieldset
+	{
+	background-repeat: no-repeat;
+	background-position: 100% 8px;
+	display: block;
+	float: left;
+	background-color: #FFF;
+}
+
+.form_1_pnl_css fieldset {
+	background-image: url(images/body/panels/form_1_pnl_css.gif);
+}
+
+.form_2_pnl_css fieldset {
+	/*background-image: url(images/body/panels/form_2_pnl_css.gif);*/
+}
+
+.form_3_pnl_css fieldset {
+	/*background-image: url(images/body/panels/form_3_pnl_css.gif);*/
+}
+
+.form_4_pnl_css fieldset {
+	background-image: url(images/body/panels/form_4_pnl_css.gif);
+}
+
+.form_5_pnl_css fieldset {
+	background-image: url(images/body/panels/form_5_pnl_css.gif);
+}
+/*SCROLL*/
+.scrollCorto_pnl_css {
+	overflow: auto;
+}
+
+.form_1_pnl_css fieldset fieldset {
+	width: 100%;
+}
+/**** callBackPanel  *****/
+.form_scroll_cbp_css,.form_scroll_pnl_css, /**/ .scroll_pnl_css {
+	overflow-x: auto;
+	overflow-y: hidden;
+	border: 1px solid #EEEEEE;
+	/*  ANCHO OBLIGADO */
+	width: 910px !important;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	height: auto !important;
+}
+
+.scroll_size_pnl_css {
+	overflow: auto;
+	/*border: 1px solid #EEEEEE;*/
+	width: auto;
+	/*  alto fijo */
+	height: 400px;
+}
+/********************************  PANEL REPORT   ********************************/
+.report_pnl_css {
+	overflow-x: auto;
+	overflow-y: hidden;
+	border: 1px solid #EEEEEE;
+	/*  ANCHO OBLIGADO */
+	width: 948px !important;
+	margin-bottom: 10px;
+	padding-bottom: 30px;
+	height: auto !important;
+}
+
+.report_pnl_css div { /*background-color:red !important;
+	margin-bottom:20px !important;*/
+	overflow: visible !important;
+	display: block;
+	font-family: Verdana;
+}
+
+.report_pnl_css div .DXRResetStyle {
+	border: solid 1px red !important;
+
+	/*background-color:blue !important;
+	padding-bottom:30px !important;
+	margin-bottom:30px !important;*/
+}
+
+.report_pnl_css div .DXRResetStyle tbody td {
+	/*border: solid 1px blue !important;*/
+	padding-left: 2px;
+	padding-right: 1px;
+}
+
+/**********************************************************************************/
+
+/**********************************************************************************/
+/******************************  PANELES COLUMNAS *********************************/
+/**********************************************************************************/
+/***** Estilos para combinar filas ******/
+/**** callBackPanel ****/
+.form_1_cbp_css li.rowspan,.form_2_cbp_css li.rowspan,.form_3_cbp_css li.rowspan,.form_4_cbp_css li.rowspan,.form_5_cbp_css li.rowspan,
+	/**/ .form_1_pnl_css li.rowspan,.form_2_pnl_css li.rowspan,.form_3_pnl_css li.rowspan,.form_4_pnl_css li.rowspan,.form_5_pnl_css li.rowspan
+	{
+	height: auto;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+/**/
+.form_1_cbp_css li.rowspan_2,.form_2_cbp_css li.rowspan_2,.form_3_cbp_css li.rowspan_2,.form_4_cbp_css li.rowspan_2,.form_5_cbp_css li.rowspan_2,
+	/**/ .form_1_pnl_css li.rowspan_2,.form_2_pnl_css li.rowspan_2,.form_3_pnl_css li.rowspan_2,.form_4_pnl_css li.rowspan_2,.form_5_pnl_css li.rowspan_2
+	{
+	height: 96px !important;
+}
+
+/**/
+.form_1_cbp_css li.rowspan_3,.form_2_cbp_css li.rowspan_3,.form_3_cbp_css li.rowspan_3,.form_4_cbp_css li.rowspan_3,.form_5_cbp_css li.rowspan_3,
+	/**/ .form_1_pnl_css li.rowspan_3,.form_2_pnl_css li.rowspan_3,.form_3_pnl_css li.rowspan_3,.form_4_pnl_css li.rowspan_3,.form_5_pnl_css li.rowspan_3
+	{
+	height: 144px !important;
+}
+
+/**** Estilos para combinar columnas *****/
+.form_2_cbp_css li.colspan_2,.form_2_pnl_css li.colspan_2 {
+	width: 94%;
+}
+
+.form_3_cbp_css li.colspan_2,.form_3_pnl_css li.colspan_2 {
+	width: 590px;
+}
+
+.form_3_cbp_css li.colspan_3,.form_3_pnl_css li.colspan_3 {
+	width: 94%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.form_4_cbp_css li.colspan_2,.form_4_pnl_css li.colspan_2 {
+	width: 46%;
+}
+
+.form_4_cbp_css li.colspan_3,.form_4_pnl_css li.colspan_3 {
+	width: 69%;
+}
+
+.form_4_cbp_css li.colspan_4,.form_4_pnl_css li.colspan_4 {
+	width: 94%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.form_5_cbp_css li.colspan_2,.form_5_pnl_css li.colspan_2 {
+	width: 36%;
+}
+
+.form_5_cbp_css li.colspan_3,.form_5_pnl_css li.colspan_3 {
+	width: 54%;
+}
+
+.form_5_cbp_css li.colspan_4,.form_5_pnl_css li.colspan_4 {
+	width: 72%;
+}
+
+.form_5_cbp_css li.colspan_5,.form_5_pnl_css li.colspan_5 {
+	width: 94%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+/** BLOQUES **/
+/**** callBackPanel ****/
+.form_1_cbp_css ul,.form_1_cbp_css ol,.form_2_cbp_css ul,.form_2_cbp_css ol,.form_3_cbp_css ul,.form_3_cbp_css ol,.form_4_cbp_css ul,.form_4_cbp_css ol,.form_5_cbp_css ul,.form_5_cbp_css ol,
+	/**/ .form_1_pnl_css ul,.form_1_pnl_css ol,.form_2_pnl_css ul,.form_2_pnl_css ol,.form_3_pnl_css ul,.form_3_pnl_css ol,.form_4_pnl_css ul,.form_4_pnl_css ol,.form_5_pnl_css ul,.form_5_pnl_css ol
+{
+	counter-reset: none !important;
+	display: block;
+}
+
+/** CELDAS **/
+/**** callBackPanel ****/
+.form_1_cbp_css li,.form_2_cbp_css li,.form_3_cbp_css li,.form_4_cbp_css li,.form_5_cbp_css li,
+	/**/ .form_1_pnl_css li,.form_2_pnl_css li,.form_3_pnl_css li,.form_4_pnl_css li,.form_5_pnl_css li
+{
+	height: 56px;
+	display: block;
+	overflow: hidden;
+	padding-left: 5px;
+	padding-right: 5px;
+	float: left;
+}
+
+.form_1_cbp_css li,.form_1_pnl_css li {
+	width: 100%;
+	height: auto;
+	overflow: visible;
+}
+
+.form_2_cbp_css li,.form_2_pnl_css li {
+	width: 47%;
+}
+
+.form_3_cbp_css li,.form_3_pnl_css li {
+	width: 290px;
+}
+
+.form_4_cbp_css li,.form_4_pnl_css li {
+	width: 23%;
+}
+
+.form_5_cbp_css li,.form_5_pnl_css li {
+	width: 17%;
+}
+
+/** CHECKS  **/
+/**** callBackPanel ****/
+.form_1_cbp_css li.check,.form_2_cbp_css li.check,.form_3_cbp_css li.check,.form_4_cbp_css li.check,.form_5_cbp_css li.check,
+	/**/ .form_1_pnl_css li.check,.form_2_pnl_css li.check,.form_3_pnl_css li.check,.form_4_pnl_css li.check,.form_5_pnl_css li.check
+	{
+	position: relative;
+	right: 0px;
+	top: 0px;
+}
+
+/**** callBackPanel ****/
+.form_1_cbp_css li.check .checkBox_css,.form_2_cbp_css li.check .checkBox_css,.form_3_cbp_css li.check .checkBox_css,.form_4_cbp_css li.check .checkBox_css,.form_5_cbp_css li.check .checkBox_css,
+	/**/ .form_1_pnl_css li.check .checkBox_css,.form_2_pnl_css li.check .checkBox_css,.form_3_pnl_css li.check .checkBox_css,.form_4_pnl_css li.check .checkBox_css,.form_5_pnl_css li.check .checkBox_css
+	{
+	position: absolute;
+	right: 30px;
+	top: -15px;
+}
+
+/***********************************************/
+/***********************************************/
+/***********************************************/
+.field_Construccion_pnl_css {
+	margin-top: 20px;
+	background-image: none;
+	width: 960px;
+	display: block;
+}
+
+.finFuncionalidad_pnl_css,.enConstruccion_pnl_css ul,.enConstruccion_pnl_css ol
+	{
+	counter-reset: none
+}
+
+.finFuncionalidad_pnl_css {
+	background-image: url(images/body/finFuncionalidad.gif) !important;
+	background-repeat: no-repeat;
+	background-position: center center;
+	float: left;
+	padding-bottom: 5px;
+	width: 100%;
+	height: 300px;
+}
+
+.enConstruccion_pnl_css {
+	background-image: url(images/body/enConstruccion.gif) !important;
+	background-repeat: no-repeat;
+	background-position: center center;
+	float: left;
+	padding-bottom: 5px;
+	width: 100%;
+	height: 300px;
+}
+
+.enConstruccion_pnl_css li {
+	width: 47%;
+	display: block;
+	float: left;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	min-height: 48px !important;
+}
+
+/**********************************************************/
+/************** CALLBACK PANEL DEFAULT  *******************/
+/*********(este debe desaparecer en el futuro)*************/
+.ASPxDefault_cbp_css {
+	width: 100%;
+	overflow: hidden;
+	margin-left: -2px;
+	float: left;
+}
+
+.ASPxFloat_cbp_css {
+	width: auto;
+	overflow: hidden;
+	margin-left: -2px;
+	float: left;
+}
+/*.ASPxDefault_cbp_css li{ width:90% !important;}*/
+.ASPxDefault_cbp_css .ASPxDefault_tb_css {
+	float: left;
+	width: 95%;
+	border: solid 1px #E6EFA5;
+}
+
+.ASPxDefault_cbp_css .search_enable_css {
+	float: left;
+}
+
+.ASPxDefault_cbp_css table {
+	float: left;
+}
+
+/**********************************************************/
+/************ test fieldset grouping text *****************/
+/************   lizza pulido 27/07/2011   *****************/
+.formGroup_2_pnl_css {
+	float: left;
+	padding-bottom: 5px;
+	width: 47%;
+	background-repeat: no-repeat;
+	background-position: 0% 0%;
+	display: block;
+}
+
+.formGroup_2_pnl_css li {
+	width: 47%;
+	margin: 0px, 20px, 0px, 20px;
+	height: 45px;
+	display: block;
+	overflow: hidden;
+	padding-left: 5px;
+	padding-right: 5px;
+	float: left;
+}
+
+.formGroup_2_pnl_css ul,.formGroup_2_pnl_css ol {
+	counter-reset: none;
+	display: block;
+}
+
+.formGroup_2_pnl_css li.rowspan_temp {
+	height: 91px !important;
+	margin-bottom: 10px;
+}
+
+.formGroup_2_pnl_css li.rowspan_2 {
+	height: 90px !important;
+	margin-bottom: 10px;
+}
+
+.formGroup_2_pnl_css li.rowspan {
+	height: auto !important;
+	margin-bottom: 10px !important;
+}
+
+.formGroup_2_pnl_css li.colspan_2 {
+	width: 100%;
+}
+
+.formGroup_2_pnl_css fieldset {
+	background-repeat: no-repeat;
+	background-position: 100% 8px;
+	display: block;
+	float: left;
+	background-color: #FFF;
+	width: 95% !important;
+	border: solid 1px #BECFA8;
+	margin-left: 5px;
+}
+
+.formGroup_2_pnl_css fieldset legend {
+	color: #295C51;
+	padding-bottom: 3px;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.formGroup_2_pnl_css ul.groupingControls_css {
+	padding-top: 10px;
+}
+
+.formGroup_2_pnl_css .dxeRadioButtonList,.dxeRadioButtonList label {
+	width: 200px;
+}
+
+.formGroup_2_pnl_css .userControl_uc_css li {
+	margin-left: -2px;
+}
+
+/**********************************************************************************/
+/********************************  PANELES ANIDADOS *******************************/
+/**********************************************************************************/
+
+/*.form_3_pnl_css .form_2_pnl_css fielset
+{
+	width:90% !important;
+}
+*/
+/*.form_3_pnl_css .form_2_pnl_css li
+{
+	margin-right:5px;
+	width:46%;
+	overflow:hidden;
+}*/
+.form_3_pnl_css .form_2_pnl_css li.colspan_2 {
+	width: 94%;
+}
+
+.form_3_pnl_css .form_2_pnl_css li .ASPxGridView_css {
+	width: 95% !important;
+}
+
+.form_3_pnl_css .form_2_pnl_css li {
+	width: 47%;
+}
+/*.form_3_pnl_css .form_2_pnl_css .form_1_pnl_css{overflow:hidden;}*/
+.form_3_pnl_css .form_2_pnl_css .form_3_pnl_css li.colspan_2 {
+	width: 69%;
+}
+
+.form_3_pnl_css .form_2_pnl_css .form_3_pnl_css li.colspan_3 {
+	width: 94%;
+}
+
+.form_3_pnl_css .form_2_pnl_css .form_3_pnl_css li {
+	width: 31%;
+}
+
+.form_2_pnl_css .form_1_pnl_css li,.form_3_pnl_css .form_2_pnl_css .form_1_pnl_css li
+	{
+	width: 100%;
+}
+
+/*.form_1_cbp_css,
+.form_2_cbp_css,
+.form_3_cbp_css,
+.form_4_cbp_css,
+.form_5_cbp_css,
+****
+.form_1_pnl_css,
+.form_2_pnl_css,
+.form_3_pnl_css,
+.form_4_pnl_css,
+.form_5_pnl_css{*/
+
+/**********************************************************************************/
+/***********   PANELES ANIDADOS (Combinaciones Nivel 1)   *************************/
+/**********************************************************************************/
+/*** Callback Panels ****/
+.form_1_cbp_css .form_2_cbp_css li.colspan_2,.form_1_cbp_css .form_3_cbp_css li.colspan_3,.form_1_cbp_css .form_4_cbp_css li.colspan_4,.form_1_cbp_css .form_5_cbp_css li.colspan_5,
+	/**/ .form_2_cbp_css .form_1_cbp_css li,.form_2_cbp_css .form_3_cbp_css li.colspan_3,.form_2_cbp_css .form_4_cbp_css li.colspan_4,.form_2_cbp_css .form_5_cbp_css li.colspan_5,
+	/**/ .form_4_cbp_css	.form_1_cbp_css li,.form_4_cbp_css	.form_2_cbp_css	li.colspan_2,.form_4_cbp_css	.form_3_cbp_css li.colspan_3,.form_4_cbp_css	.form_5_cbp_css li.colspan_5,
+	/**/ .form_5_cbp_css	.form_1_cbp_css li,.form_5_cbp_css	.form_2_cbp_css	li.colspan_2,.form_5_cbp_css	.form_3_cbp_css li.colspan_3,.form_5_cbp_css	.form_4_cbp_css li.colspan_4,
+	/**/ .form_3_cbp_css	.form_1_cbp_css li,.form_3_cbp_css .form_2_cbp_css	li.colspan_2,.form_3_cbp_css .form_4_cbp_css li.colspan_4,.form_3_cbp_css .form_5_cbp_css li.colspan_5,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_2_pnl_css li.colspan_2,.form_1_pnl_css .form_3_pnl_css li.colspan_3,.form_1_pnl_css .form_4_pnl_css li.colspan_4,.form_1_pnl_css .form_5_pnl_css li.colspan_5,
+	/**/ .form_2_pnl_css .form_1_pnl_css li,.form_2_pnl_css .form_3_pnl_css li.colspan_3,.form_2_pnl_css .form_4_pnl_css li.colspan_4,.form_2_pnl_css .form_5_pnl_css li.colspan_5,
+	/**/ .form_4_pnl_css	.form_1_pnl_css li,.form_4_pnl_css	.form_2_pnl_css	li.colspan_2,.form_4_pnl_css	.form_3_pnl_css li.colspan_3,.form_4_pnl_css	.form_5_pnl_css li.colspan_5,
+	/**/ .form_5_pnl_css	.form_1_pnl_css li,.form_5_pnl_css	.form_2_pnl_css	li.colspan_2,.form_5_pnl_css	.form_3_pnl_css li.colspan_3,.form_5_pnl_css	.form_4_pnl_css li.colspan_4,
+	/**/ .form_3_pnl_css	.form_1_pnl_css li,.form_3_pnl_css .form_2_pnl_css	li.colspan_2,.form_3_pnl_css .form_4_pnl_css li.colspan_4,.form_3_pnl_css .form_5_pnl_css li.colspan_5
+	{
+	width: 94%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_5_cbp_css li,.form_2_cbp_css .form_5_cbp_css li,.form_3_cbp_css .form_5_cbp_css li,.form_4_cbp_css	.form_5_cbp_css li,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_5_pnl_css li,.form_2_pnl_css .form_5_pnl_css li,.form_3_pnl_css .form_5_pnl_css li,.form_4_pnl_css	.form_5_pnl_css li
+	{
+	width: 17%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_5_cbp_css li.colspan_2,.form_2_cbp_css .form_5_cbp_css li.colspan_2,.form_3_cbp_css .form_5_cbp_css li.colspan_2,.form_4_cbp_css	.form_5_cbp_css li.colspan_2,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_5_pnl_css li.colspan_2,.form_2_pnl_css .form_5_pnl_css li.colspan_2,.form_3_pnl_css .form_5_pnl_css li.colspan_2,.form_4_pnl_css	.form_5_pnl_css li.colspan_2
+	{
+	width: 36%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_5_cbp_css li.colspan_4,.form_2_cbp_css .form_5_cbp_css li.colspan_4,.form_3_cbp_css .form_5_cbp_css li.colspan_4,.form_4_cbp_css	.form_5_cbp_css li.colspan_4,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_5_pnl_css li.colspan_4,.form_2_pnl_css .form_5_pnl_css li.colspan_4,.form_3_pnl_css .form_5_pnl_css li.colspan_4,.form_4_pnl_css	.form_5_pnl_css li.colspan_4
+	{
+	width: 72%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_2_cbp_css li,.form_3_cbp_css	.form_2_cbp_css li,.form_4_cbp_css	.form_2_cbp_css li,.form_5_cbp_css	.form_2_cbp_css li,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_2_pnl_css li,.form_3_pnl_css	.form_2_pnl_css li,.form_4_pnl_css	.form_2_pnl_css li,.form_5_pnl_css	.form_2_pnl_css li
+	{
+	width: 47%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_3_cbp_css li,.form_2_cbp_css .form_3_cbp_css li,.form_4_cbp_css	.form_3_cbp_css li,.form_5_cbp_css	.form_3_cbp_css li,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_3_pnl_css li,.form_2_pnl_css .form_3_pnl_css li,.form_4_pnl_css	.form_3_pnl_css li,.form_5_pnl_css	.form_3_pnl_css li
+	{
+	width: 31%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_3_cbp_css li.colspan_2,.form_2_cbp_css .form_3_cbp_css li.colspan_2,.form_4_cbp_css	.form_3_cbp_css li.colspan_2,.form_5_cbp_css	.form_3_cbp_css li.colspan_2,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_3_pnl_css li.colspan_2,.form_2_pnl_css .form_3_pnl_css li.colspan_2,.form_4_pnl_css	.form_3_pnl_css li.colspan_2,.form_5_pnl_css	.form_3_pnl_css li.colspan_2
+	{
+	width: 63%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_4_cbp_css li,.form_2_cbp_css .form_4_cbp_css li,.form_3_cbp_css .form_4_cbp_css li,.form_5_cbp_css	.form_4_cbp_css li,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_4_pnl_css li,.form_2_pnl_css .form_4_pnl_css li,.form_3_pnl_css .form_4_pnl_css li,.form_5_pnl_css	.form_4_pnl_css li
+	{
+	width: 23%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_4_cbp_css li.colspan_3,.form_2_cbp_css .form_4_cbp_css li.colspan_3,.form_3_cbp_css .form_4_cbp_css li.colspan_3,.form_5_cbp_css	.form_4_cbp_css li.colspan_3,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_4_pnl_css li.colspan_3,.form_2_pnl_css .form_4_pnl_css li.colspan_3,.form_3_pnl_css .form_4_pnl_css li.colspan_3,.form_5_pnl_css	.form_4_pnl_css li.colspan_3
+	{
+	width: 69%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_4_cbp_css li.colspan_2,.form_2_cbp_css .form_4_cbp_css li.colspan_2,.form_3_cbp_css .form_4_cbp_css li.colspan_2,.form_5_cbp_css	.form_4_cbp_css li.colspan_2,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_4_pnl_css li.colspan_2,.form_2_pnl_css .form_4_pnl_css li.colspan_2,.form_3_pnl_css .form_4_pnl_css li.colspan_2,.form_5_pnl_css	.form_4_pnl_css li.colspan_2
+	{
+	width: 46%
+}
+
+/*** Callback Panels ****/
+.form_1_cbp_css .form_5_cbp_css li.colspan_3,.form_2_cbp_css .form_5_cbp_css li.colspan_3,.form_3_cbp_css .form_5_cbp_css li.colspan_3,.form_4_cbp_css	.form_5_cbp_css li.colspan_3,
+	/*** Paneles Nativos ****/ .form_1_pnl_css .form_5_pnl_css li.colspan_3,.form_2_pnl_css .form_5_pnl_css li.colspan_3,.form_3_pnl_css .form_5_pnl_css li.colspan_3,.form_4_pnl_css	.form_5_pnl_css li.colspan_3
+	{
+	width: 54%
+}
+
+/**************************************************************/
+/**************************************************************/
+/**************************************************************/
+/**************************************************************/
+
+/******* CONTROLES ******/
+.form_1_pnl_css .iceOutTxt,.form_2_pnl_css .iceOutTxt,.form_3_pnl_css .iceOutTxt,.form_4_pnl_css .iceOutTxt,.form_5_pnl_css .iceOutTxt,.form_1_pnl_css .form_2_pnl_css li.colspan_2 .iceOutTxt,.form_1_pnl_css .form_3_pnl_css li.colspan_3 .iceOutTxt,.form_1_pnl_css .form_4_pnl_css li.colspan_4 .iceOutTxt,.form_1_pnl_css .form_5_pnl_css li.colspan_5 .iceOutTxt,.form_2_pnl_css .form_1_pnl_css li .iceOutTxt,.form_2_pnl_css .form_3_pnl_css li.colspan_3 .iceOutTxt,.form_2_pnl_css .form_4_pnl_css li.colspan_4 .iceOutTxt,.form_2_pnl_css .form_5_pnl_css li.colspan_5 .iceOutTxt,.form_4_pnl_css	.form_1_pnl_css li .iceOutTxt,.form_4_pnl_css	.form_2_pnl_css	li.colspan_2 .iceOutTxt,.form_4_pnl_css	.form_3_pnl_css li.colspan_3 .iceOutTxt,.form_4_pnl_css	.form_5_pnl_css li.colspan_5 .iceOutTxt,.form_5_pnl_css	.form_1_pnl_css li .iceOutTxt,.form_5_pnl_css	.form_2_pnl_css	li.colspan_2 .iceOutTxt,.form_5_pnl_css	.form_3_pnl_css li.colspan_3 .iceOutTxt,.form_5_pnl_css	.form_4_pnl_css li.colspan_4 .iceOutTxt,.form_3_pnl_css	.form_1_pnl_css li .iceOutTxt,.form_3_pnl_css .form_2_pnl_css	li.colspan_2 .iceOutTxt,.form_3_pnl_css .form_4_pnl_css li.colspan_4 .iceOutTxt,.form_3_pnl_css .form_5_pnl_css li.colspan_5 .iceOutTxt
+	{
+	color: #333333;
+	float: left;
+	height: 14px;
+	padding-top: 3px;
+	line-height: 12px;
+	width: 95%;
+	font-size: 11px;
+	padding-bottom: 3px;
+	font-weight: bold;
+
+}
+
+.form_1_pnl_css .iceSelInpTxt,.form_2_pnl_css .iceSelInpTxt,.form_3_pnl_css .iceSelInpTxt,.form_4_pnl_css .iceSelInpTxt,.form_5_pnl_css .iceSelInpTxt,.form_1_pnl_css .ice-calcontainer,.form_2_pnl_css .ice-calcontainer,.form_3_pnl_css .ice-calcontainer,.form_4_pnl_css .ice-calcontainer,.form_5_pnl_css .ice-calcontainer
+	{
+	float: left;
+	clear: both;
+	margin-top: -4px
+}
+
+.form_1_pnl_css .iceSelInpTxt .iceSelInpTxtTxt,.form_2_pnl_css .iceSelInpTxt .iceSelInpTxtTxt,.form_3_pnl_css .iceSelInpTxt .iceSelInpTxtTxt,.form_4_pnl_css .iceSelInpTxt .iceSelInpTxtTxt,.form_5_pnl_css .iceSelInpTxt .iceSelInpTxtTxt,.form_1_pnl_css .ice-calcontainer .text-input,.form_2_pnl_css .ice-calcontainer .text-input,.form_3_pnl_css .ice-calcontainer .text-input,.form_4_pnl_css .ice-calcontainer .text-input,.form_5_pnl_css .ice-calcontainer .text-input
+	{
+	border: solid 1px #599EC6;
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+	color: #333333;
+	margin-bottom: 0px;
+	padding-top: 1px;
+	padding-left: 5px;
+	padding-bottom: 1px;
+	width: 74%;
+	
+}
+
+.form_1_pnl_css .iceSelOneMnu,
+.form_2_pnl_css .iceSelOneMnu,
+.form_3_pnl_css .iceSelOneMnu,
+.form_4_pnl_css .iceSelOneMnu,
+.form_5_pnl_css .iceSelOneMnu
+{
+	border: solid 1px #599EC6;
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+	color: #333333;
+	clear: both;
+	float: left;
+	margin-bottom: 0px;
+	margin-top: 1px;
+	padding-top: 1px;
+	padding-left: 5px;
+	padding-bottom: 1px;
+	width: 79% !important;
+	text-transform: uppercase;
+}
+
+
+
+.form_1_pnl_css .iceSelMnyMnu,
+.form_2_pnl_css .iceSelMnyMnu,
+.form_3_pnl_css .iceSelMnyMnu,
+.form_4_pnl_css .iceSelMnyMnu,
+.form_5_pnl_css .iceSelMnyMnu,
+.form_1_pnl_css .iceInpTxt,
+.form_2_pnl_css .iceInpTxt,
+.form_3_pnl_css .iceInpTxt,
+.form_4_pnl_css .iceInpTxt,
+.form_5_pnl_css .iceInpTxt,
+.form_1_pnl_css .iceInpTxtArea,
+.form_2_pnl_css .iceInpTxtArea,
+.form_3_pnl_css .iceInpTxtArea,
+.form_4_pnl_css .iceInpTxtArea,
+.form_5_pnl_css .iceInpTxtArea
+	{
+	border: solid 1px #599EC6;
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+	color: #333333;
+	clear: both;
+	float: left;
+	margin-bottom: 0px;
+	margin-top: 1px;
+	padding-top: 1px;
+	padding-left: 5px;
+	padding-bottom: 1px;
+	width: 75% !important;
+	text-transform: uppercase;
+}
+
+.form_1_pnl_css .iceSelOneRb,.form_2_pnl_css .iceSelOneRb,.form_3_pnl_css .iceSelOneRb,.form_4_pnl_css .iceSelOneRb,.form_5_pnl_css .iceSelOneRb
+	{
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	border: solid 0px #FFFFFF;
+}
+
+.iceCmdBtn,.form_1_pnl_css .iceCmdBtn,.form_2_pnl_css .iceCmdBtn,.form_3_pnl_css .iceCmdBtn,.form_4_pnl_css .iceCmdBtn,.form_5_pnl_css .iceCmdBtn
+	{ /*float: right;*/
+	margin-right: 5px;
+	background-image: url(../images/controls/bgBtn.jpg);
+	height: 22px;
+	margin-left: 8px;
+	margin-right: 2px;
+	padding-left: 7px;
+	padding-right: 7px;
+	border: solid 1px #CBCBCB;
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif, Tahoma;
+	color: #333333;
+	float: right;
+	cursor: pointer;
+}
+
+.iceMsgError,.form_1_pnl_css .iceMsgError,.form_2_pnl_css .iceMsgError,.form_3_pnl_css .iceMsgError,.form_4_pnl_css .iceMsgError,.form_5_pnl_css .iceMsgError
+	{
+	float: left;
+	color: red;
+	background-image: url(../images/controls/bg_validator.gif);
+	background-position: 0px 0px;
+	background-repeat: no-repeat;
+	font-size: 10px;
+	padding-left: 14px;
+	font-weight: bold;
+}
+
+/*************************/
+.add_css,
+.edit_css,
+.delete_css,
+.fileCoord_css,
+.fileMethod_css,
+.viewMap_css,
+.reload_css,
+.up_css,
+.next_css,
+.back_css,
+.down_css,
+.save_css,
+.cancel_css{
+	width: 40px !important;
+	height: 40px !important;
+	background-position: 50% 50% !important;
+	background-repeat: no-repeat !important;
+	border: solid 0px #FFFFFF !important;
+		
+}
+.add_css{background-image: url(../images/icons/add_css.gif) !important}
+.edit_css{background-image: url(../images/icons/edit_css.gif) !important}
+.delete_css{background-image: url(../images/icons/delete_css.gif) !important}
+.fileCoord_css{background-image: url(../images/icons/fileCoord_css.gif) !important}
+.fileMethod_css{background-image: url(../images/icons/fileMethod_css.gif) !important}
+.viewMap_css{background-image: url(../images/icons/viewMap_css.gif) !important}
+.reload_css{background-image: url(../images/icons/reload_css.gif) !important}
+.up_css{background-image: url(../images/icons/up_css.gif) !important}
+.next_css{background-image: url(../images/icons/next_css.gif) !important}
+.back_css{background-image: url(../images/icons/back_css.gif) !important}
+.down_css{background-image: url(../images/icons/down_css.gif) !important}
+.save_css{background-image: url(../images/icons/save_css.gif) !important}
+.cancel_css{background-image: url(../images/icons/cancel_css.gif) !important}
+
+
+/***************************/
+
+.addShort_css,
+.editShort_css,
+.deleteShort_css,
+.fileCoordShort_css,
+.fileMethodShort_css,
+.viewMapShort_css,
+.reloadShort_css,
+.upShort_css,
+.nextShort_css,
+.backShort_css,
+.downShort_css,
+.saveShort_css,
+.cancelShort_css{
+	width: 20px !important;
+	height: 20px !important;
+	background-position: 50% 50% !important;
+	background-repeat: no-repeat !important;
+	border: solid 0px #FFFFFF !important;
+		
+}
+.addShort_css{background-image: url(../images/icons/addShort_css.gif) !important}
+.editShort_css{background-image: url(../images/icons/editShort_css.gif) !important}
+.deleteShort_css{background-image: url(../images/icons/deleteShort_css.gif) !important}
+.fileCoordShort_css{background-image: url(../images/icons/fileCoordShort_css.gif) !important}
+.fileMethodShort_css{background-image: url(../images/icons/fileMethodShort_css.gif) !important}
+.viewMapShort_css{background-image: url(../images/icons/viewMapShort_css.gif) !important}
+.reloadShort_css{background-image: url(../images/icons/reloadShort_css.gif) !important}
+.upShort_css{background-image: url(../images/icons/upShort_css.gif) !important}
+.nextShort_css{background-image: url(../images/icons/nextShort_css.gif) !important}
+.backShort_css{background-image: url(../images/icons/backShort_css.gif) !important}
+.downShort_css{background-image: url(../images/icons/downShort_css.gif) !important}
+.saveShort_css{background-image: url(../images/icons/saveShort_css.gif) !important}
+.cancelShort_css{background-image: url(../images/icons/cancelShort_css.gif) !important}
+
+.btnAccept_css,
+.btnCancel_css{
+	width: 16px !important;
+	height: 16px !important;
+	background-position: 50% 50% !important;
+	background-repeat: no-repeat !important;
+	border: solid 0px #FFFFFF !important;
+}
+
+.btnAccept_css{background-image: url(../images/icons/accept.png) !important}
+.btnCancel_css{background-image: url(../images/icons/cancel.png) !important}
+
+.form_1_pnl_css .iceSelInpDateMoYrDropdown, 
+.form_2_pnl_css .iceSelInpDateMoYrDropdown, 
+.form_3_pnl_css .iceSelInpDateMoYrDropdown, 
+.form_4_pnl_css .iceSelInpDateMoYrDropdown, 
+.form_5_pnl_css .iceSelInpDateMoYrDropdown{
+   width: 105px !important;
+}

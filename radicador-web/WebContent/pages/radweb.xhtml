@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+<h:head>
+	<title>Radicador de Solicitudes Mineras</title>
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/css/rime.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/design/css/structure.css" />
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/design/css/layoutPrincipal.css" />
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/design/js/AC_RunActiveContent.js"
+		language="javascript"></script>
+	<script type="text/javascript"
+		src="https://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+	<script>
+		var sessionExpiryHandler = function() {
+			alert('Su sesi\u00f3n ha expirado. Por favor ingrese de nuevo a la aplicaci\u00f3n.');
+			window.location = "#{facesContext.externalContext.requestContextPath}/index.html";
+		}
+		//ice.onSessionExpiry(sessionExpiryHandler);
+	</script>
+</h:head>
+<h:body styleClass="ice-skin-rime">
+	<ice:form id="main">
+		<table border="0" cellspacing="0" cellpadding="0" align="center"
+			class="mainTable_css">
+			<tr>
+				<td colspan="3" class="header_css">
+					<div class="dateControl_css">
+						<ice:outputText value="#{session.lastAccessedTime}">
+							<f:convertDateTime dateStyle="full" timeZone="EST" type="date" />
+						</ice:outputText>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="leftUp_shadow"></td>
+				<td class="up_shadow"></td>
+				<td class="rightUp_shadow"></td>
+			</tr>
+			<tr>
+				<td class="left_shadow"></td>
+				<td class="mainContent">
+					<!-- ******************************************************************* -->
+					<!-- **********************        HEADER          ********************* -->
+					<!-- ******************************************************************* -->
+					<ice:panelGroup styleClass="header_pnl_est_css">
+						<ui:include src="header.xhtml" />
+					</ice:panelGroup> <!-- ******************************************************************* -->
+					<!-- *****************        CONTENIDO PRINICPAL          ************* -->
+					<!-- ******************************************************************* -->
+					<ice:panelGroup styleClass="body_pnl_est_css">
+						<ice:panelGroup styleClass="title_css">
+							<ice:outputText value="#{msg['modalidad']}" />
+						</ice:panelGroup>
+						<f:validateBean disabled="true">
+							<ice:panelGroup rendered="#{radweb.currentTab == 1}">
+								<ui:include src="RegistrarSolicitante.xhtml" />
+							</ice:panelGroup>
+							<ice:panelGroup rendered="#{radweb.currentTab == 2}">
+								<ui:include src="RegistrarSolicitud.xhtml" />
+							</ice:panelGroup>
+							<ice:panelGroup rendered="#{radweb.currentTab == 3}">
+								<ui:include src="RegistrarLocalizacion.xhtml" />
+							</ice:panelGroup>
+						</f:validateBean>
+						<ice:panelGroup rendered="#{param['SHOW_GLOBAL_MESSAGE']}"
+							styleClass="pnlBtn_css">
+							<ui:include src="/pages/message.xhtml" />
+						</ice:panelGroup>
+					</ice:panelGroup> <!-- ******************************************************************* -->
+					<!-- ************************      FOOTER         ********************** -->
+					<!-- ******************************************************************* -->
+					<ice:panelGroup styleClass="creditos_css">
+						<ui:include src="footer.xhtml" />
+					</ice:panelGroup> <!-- ******************************************************************* -->
+				</td>
+				<td class="right_shadow"></td>
+			</tr>
+			<tr>
+				<td class="leftDown_shadow"></td>
+				<td class="down_shadow"></td>
+				<td class="rightDown_shadow"></td>
+			</tr>
+			<tr>
+				<td colspan="3" class="foot_css"><!--img
+					src="#{facesContext.externalContext.requestContextPath}/design/images/layout/linksInstitucionales.png"
+					usemap="#Map" /--></td>
+			</tr>
+		</table>
+		<ui:include src="/pages/captcha.xhtml" />
+		<ui:include src="/pages/procesing.xhtml" />
+		<ice:panelConfirmation id="closeConfirmPanel"
+			title="#{msg['page.panelConfirmation.title']}"
+			message="#{msg['page.panelConfirmation.message']}"
+			acceptLabel="#{msg['page.button.ok']}"
+			cancelLabel="#{msg['page.button.cancel']}" />
+		<ice:panelConfirmation id="nextConfirmPanel"
+			title="#{msg['page.panelConfirmation.next.title']}"
+			message="#{msg['page.panelConfirmation.next.message']}"
+			acceptLabel="#{msg['page.button.ok']}"
+			cancelLabel="#{msg['page.button.cancel']}" />
+		<ice:panelConfirmation id="radicarConfirmPanel"
+			title="#{msg['page.panelConfirmation.radicar.title']}"
+			message="#{msg['page.panelConfirmation.radicar.message']}"
+			acceptLabel="#{msg['page.button.ok']}"
+			cancelLabel="#{msg['page.button.cancel']}" />
+	</ice:form>
+	<map name="Map" id="Map">
+		<area shape="rect" coords="368,-1,462,26" href="#" />
+		<area shape="rect" coords="275,-1,369,26"
+			href="http://www.contratos.gov.co/" />
+		<area shape="rect" coords="182,0,276,27"
+			href="http://horalegal.sic.gov.co/" />
+		<area shape="rect" coords="82,0,183,25"
+			href="http://www.minproteccionsocial.gov.co" />
+		<area shape="rect" coords="-1,-2,81,23"
+			href="http://www.gobiernoenlinea.gov.co" />
+	</map>
+	<ice:panelGroup styleClass="content_css">
+		<f:facet name="north">
+			<center></center>
+		</f:facet>
+		<f:facet name="west"></f:facet>
+		<ice:panelBorder id="page" renderNorth="true" renderSouth="true"
+			renderCenter="true" renderWest="true">
+			<f:facet name="center"></f:facet>
+			<f:facet name="south">
+				<center></center>
+			</f:facet>
+		</ice:panelBorder>
+	</ice:panelGroup>
+	<h:outputStylesheet library="org.icefaces.component.skins"
+		name="rime.css" />
+</h:body>
+</html>

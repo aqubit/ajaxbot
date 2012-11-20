@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd ">
+	<persistence-unit name="ccxPU" transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>jdbc/ccx-ds</jta-data-source>
+		<class>com.ccx.ingeominasapp.vo.DepartamentoVO</class>
+		<class>com.ccx.ingeominasapp.vo.ReferenciaVO</class>
+		<class>com.ccx.ingeominasapp.vo.MunicipioVO</class>
+		<class>com.ccx.ingeominasapp.vo.PinVO</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<!-- Normal -->
+			<!--property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" /-->
+			<!--property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/ingeominas" /-->
+			<!-- Embedded -->
+			<!--property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" 
+				/> <property name="javax.persistence.jdbc.url" value="jdbc:derby:lmdb" / -->
+			<!--property name="javax.persistence.jdbc.password" value="ccx" /-->
+			<!--property name="javax.persistence.jdbc.user" value="ccx" /-->
+			<!--eclipselink -->
+			<property name="eclipselink.target-server" value="SunAS9" />
+			<!-- property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.DerbyPlatform"/ -->
+			<property name="eclipselink.logging.level" value="FINEST" />
+		</properties>
+	</persistence-unit>
+</persistence>

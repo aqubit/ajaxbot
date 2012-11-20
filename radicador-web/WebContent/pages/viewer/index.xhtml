@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+    <h:head>
+        <title>Servicio Geologico Minero, Radicador Web</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" ></meta>
+        <meta name="description" content="Visor Geografico del Servicio Geologico Minero, Radicador Web"></meta>
+        <meta name="keywords" content="Servicio Geologico Minero, Radicador Web"></meta>
+        <meta name="author" content="Indra S.A."></meta>
+        <!-- Include CSS to eliminate any default margins/padding and set the height of the html element and
+             the body element to 100%, because Firefox, or any Gecko based browser, interprets percentage as
+             the percentage of the height of its parent container, which has to be set explicitly.  Fix for
+             Firefox 3.6 focus border issues.  Initially, don't display flashContent div so it won't show
+             if JavaScript disabled.
+        -->
+        <style type="text/css" media="screen">
+            html, body  { height:100%; }
+            body { margin:0; padding:0; overflow:auto; text-align:center;
+                   background-color: #ffffff; }
+            object:focus { outline:none; }
+            #flashContent { display:none; }
+        </style>
+        <!-- Enable Browser History by replacing useBrowserHistory tokens with two hyphens -->
+        <!-- BEGIN Browser History required section >
+        <link rel="stylesheet" type="text/css" href="history/history.css" />
+        <script type="text/javascript" src="history/history.js"></script>
+        <! END Browser History required section -->
+        <script type="text/javascript">
+            var isIElt9 = false;
+        </script>
+        <!--[if lt IE 9]>
+            <script type="text/javascript">
+                isIElt9 = true;
+            </script>
+        <![endif]-->
+    </h:head>
+	<h:body>
+		<img src="#{facesContext.externalContext.requestContextPath}/design/images/map.png" alt="mapa"/>
+   </h:body>
+</html>

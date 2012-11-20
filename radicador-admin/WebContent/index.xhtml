@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>CCX Administrador de Radicación Minera</title>
+	<link rel="stylesheet" type="text/css"
+		href="#{facesContext.externalContext.requestContextPath}/css/ccx.css" />
+	<script>
+		var status = getUrlVars()["status"];
+
+		function load() {
+
+			if (status == 'OK') {
+				alert('Archivo cargado con éxito.');
+				var currentState = history.state;
+				history.pushState(currentState, "Home", "index.jsf");
+			}
+
+			if (status == 'FAILED') {
+				alert('Error cargando el archivo por favor intente nuevamente.');
+				var currentState = history.state;
+				history.pushState(currentState, "Home", "index.jsf");
+			}
+
+		}
+
+		function getUrlVars() {
+			var vars = {};
+			var parts = window.location.href.replace(/[?&amp;]+([^=&amp;]+)=([^&amp;]*)/gi,
+					function(m, key, value) {
+						vars[key] = value;
+					});
+			return vars;
+		}
+	</script>
+</h:head>
+<h:body onload="load()">
+	<div id="main">
+		<div style="text-align: right;">
+			<img src="images/logo.png" alt="logo" />
+		</div>
+		<h1>Administrador de Radicación Minera</h1>
+		<div class="wrapper">
+			<div class="grid_6">
+				<h2>Pines Adicionales</h2>
+				<iframe src="status.jsf" frameborder="0" width="98%" height="90%"></iframe>
+			</div>
+			<div class="grid_6">
+				<h2>Cargar archivo de configuración</h2>
+				<form
+					action="#{facesContext.externalContext.requestContextPath}/load"
+					enctype="multipart/form-data" method="post">
+					<div style="padding: 5px;">
+						<input type="file" accept="*.csv" name="ccxfile" size="20"></input>
+						<input type="submit" value="Cargar"></input>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

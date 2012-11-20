@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>CCX Status</title>
+	<style type="text/css">
+table,td,th {
+	border: 1px solid green;
+}
+
+th {
+	background-color: #007b85;
+	color: white;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form id="main">
+		<h:dataTable value="#{dao.pines}" var="p" style="width:100%;">
+			<h:column>
+				<f:facet name="header">PIN</f:facet>
+				<h:outputText value="#{p.PIN}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">CCX</f:facet>
+				<h:outputText value="X" rendered="#{p.isCCX}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">AUX</f:facet>
+				<h:outputText value="X" rendered="#{!p.isCCX}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Usado Por</f:facet>
+				<h:outputText value="#{p.usedBy}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Hora</f:facet>
+				<h:outputText value="#{p.updatedTime}">
+					<f:convertDateTime dateStyle="full" timeZone="EST" type="time" />
+				</h:outputText>
+			</h:column>
+
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

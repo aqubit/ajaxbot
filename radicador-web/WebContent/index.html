@@ -1,0 +1,655 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Radicador de Solicitudes Mineras</title>
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<link rel="stylesheet" type="text/css" href="design/css/login.css" />
+<style>
+/* Font Definitions */
+@font-face {
+	font-family: Wingdings;
+	panose-1: 5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset: 2;
+	mso-generic-font-family: auto;
+	mso-font-pitch: variable;
+	mso-font-signature: 0 268435456 0 0 -2147483648 0;
+}
+
+@font-face {
+	font-family: "Cambria Math";
+	panose-1: 2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset: 0;
+	mso-generic-font-family: roman;
+	mso-font-pitch: variable;
+	mso-font-signature: -1610611985 1107304683 0 0 415 0;
+}
+
+@font-face {
+	font-family: Calibri;
+	panose-1: 2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset: 0;
+	mso-generic-font-family: swiss;
+	mso-font-pitch: variable;
+	mso-font-signature: -520092929 1073786111 9 0 415 0;
+}
+
+@font-face {
+	font-family: Verdana;
+	panose-1: 2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset: 0;
+	mso-generic-font-family: swiss;
+	mso-font-pitch: variable;
+	mso-font-signature: -1593833729 1073750107 16 0 415 0;
+}
+/* Style Definitions */
+p.MsoNormal,li.MsoNormal,div.MsoNormal {
+	mso-style-unhide: no;
+	mso-style-qformat: yes;
+	mso-style-parent: "";
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 10.0pt;
+	margin-left: 0cm;
+	line-height: 115%;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: "Calibri", "sans-serif";
+	mso-fareast-font-family: Calibri;
+	mso-bidi-font-family: "Times New Roman";
+	mso-fareast-language: EN-US;
+}
+
+a:link,span.MsoHyperlink {
+	mso-style-priority: 99;
+	color: blue;
+	text-decoration: underline;
+	text-underline: single;
+}
+
+a:visited,span.MsoHyperlinkFollowed {
+	mso-style-noshow: yes;
+	mso-style-priority: 99;
+	color: purple;
+	mso-themecolor: followedhyperlink;
+	text-decoration: underline;
+	text-underline: single;
+}
+
+p.MsoListParagraph,li.MsoListParagraph,div.MsoListParagraph {
+	mso-style-priority: 34;
+	mso-style-unhide: no;
+	mso-style-qformat: yes;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 10.0pt;
+	margin-left: 36.0pt;
+	mso-add-space: auto;
+	line-height: 115%;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: "Calibri", "sans-serif";
+	mso-fareast-font-family: Calibri;
+	mso-bidi-font-family: "Times New Roman";
+	mso-fareast-language: EN-US;
+}
+
+p.MsoListParagraphCxSpFirst,li.MsoListParagraphCxSpFirst,div.MsoListParagraphCxSpFirst
+	{
+	mso-style-priority: 34;
+	mso-style-unhide: no;
+	mso-style-qformat: yes;
+	mso-style-type: export-only;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 36.0pt;
+	margin-bottom: .0001pt;
+	mso-add-space: auto;
+	line-height: 115%;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: "Calibri", "sans-serif";
+	mso-fareast-font-family: Calibri;
+	mso-bidi-font-family: "Times New Roman";
+	mso-fareast-language: EN-US;
+}
+
+p.MsoListParagraphCxSpMiddle,li.MsoListParagraphCxSpMiddle,div.MsoListParagraphCxSpMiddle
+	{
+	mso-style-priority: 34;
+	mso-style-unhide: no;
+	mso-style-qformat: yes;
+	mso-style-type: export-only;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 0cm;
+	margin-left: 36.0pt;
+	margin-bottom: .0001pt;
+	mso-add-space: auto;
+	line-height: 115%;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: "Calibri", "sans-serif";
+	mso-fareast-font-family: Calibri;
+	mso-bidi-font-family: "Times New Roman";
+	mso-fareast-language: EN-US;
+}
+
+p.MsoListParagraphCxSpLast,li.MsoListParagraphCxSpLast,div.MsoListParagraphCxSpLast
+	{
+	mso-style-priority: 34;
+	mso-style-unhide: no;
+	mso-style-qformat: yes;
+	mso-style-type: export-only;
+	margin-top: 0cm;
+	margin-right: 0cm;
+	margin-bottom: 10.0pt;
+	margin-left: 36.0pt;
+	mso-add-space: auto;
+	line-height: 115%;
+	mso-pagination: widow-orphan;
+	font-size: 11.0pt;
+	font-family: "Calibri", "sans-serif";
+	mso-fareast-font-family: Calibri;
+	mso-bidi-font-family: "Times New Roman";
+	mso-fareast-language: EN-US;
+}
+
+span.GramE {
+	mso-style-name: "";
+	mso-gram-e: yes;
+}
+
+.MsoChpDefault {
+	mso-style-type: export-only;
+	mso-default-props: yes;
+	mso-ascii-font-family: Calibri;
+	mso-fareast-font-family: Calibri;
+	mso-hansi-font-family: Calibri;
+}
+
+@page Section1 {
+	size: 595.3pt 841.9pt;
+	margin: 70.85pt 3.0cm 70.85pt 3.0cm;
+	mso-header-margin: 35.4pt;
+	mso-footer-margin: 35.4pt;
+	mso-paper-source: 0;
+}
+
+div.Section1 {
+	page: Section1;
+}
+/* List Definitions */
+@
+list l0 {
+	mso-list-id: 248853268;
+	mso-list-type: hybrid;
+	mso-list-template-ids: 1901734038 201981953 201981955 201981957
+		201981953 201981955 201981957 201981953 201981955 201981957;
+}
+
+@
+list l0:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: none;
+	mso-level-number-position: left;
+	margin-left: 90.0pt;
+	text-indent: -18.0pt;
+	font-family: Symbol;
+}
+
+@
+list l1 {
+	mso-list-id: 395470260;
+	mso-list-type: hybrid;
+	mso-list-template-ids: -924931450 201981953 201981955 201981957
+		201981953 201981955 201981957 201981953 201981955 201981957;
+}
+
+@
+list l1:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: none;
+	mso-level-number-position: left;
+	margin-left: 90.0pt;
+	text-indent: -18.0pt;
+	font-family: Symbol;
+}
+
+@
+list l2 {
+	mso-list-id: 762604816;
+	mso-list-type: hybrid;
+	mso-list-template-ids: 1683937348 201981967 201981955 201981957
+		201981953 201981955 201981957 201981953 201981955 201981957;
+}
+
+@
+list l2:level1 {
+	mso-level-tab-stop: none;
+	mso-level-number-position: left;
+	text-indent: -18.0pt;
+}
+
+@
+list l2:level2 {
+	mso-level-number-format: bullet;
+	mso-level-text: o;
+	mso-level-tab-stop: none;
+	mso-level-number-position: left;
+	text-indent: -18.0pt;
+	font-family: "Courier New";
+}
+
+@
+list l3 {
+	mso-list-id: 1049961551;
+	mso-list-type: hybrid;
+	mso-list-template-ids: 1683937348 201981967 201981955 201981957
+		201981953 201981955 201981957 201981953 201981955 201981957;
+}
+
+@
+list l3:level1 {
+	mso-level-tab-stop: none;
+	mso-level-number-position: left;
+	text-indent: -18.0pt;
+}
+
+@
+list l4 {
+	mso-list-id: 1331061811;
+	mso-list-type: hybrid;
+	mso-list-template-ids: -2080196538 201981953 201981955 201981957
+		201981953 201981955 201981957 201981953 201981955 201981957;
+}
+
+@
+list l4:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: none;
+	mso-level-number-position: left;
+	text-indent: -18.0pt;
+	font-family: Symbol;
+}
+
+@
+list l5 {
+	mso-list-id: 1569421319;
+	mso-list-type: hybrid;
+	mso-list-template-ids: -338234112 201981965 201981955 201981957
+		201981953 201981955 201981957 201981953 201981955 201981957;
+}
+
+@
+list l5:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0FC;
+	mso-level-tab-stop: none;
+	mso-level-number-position: left;
+	margin-left: 90.0pt;
+	text-indent: -18.0pt;
+	font-family: Wingdings;
+}
+
+@
+list l6 {
+	mso-list-id: 1903364424;
+	mso-list-type: hybrid;
+	mso-list-template-ids: 1706839378 201981953 201981955 201981957
+		201981953 201981955 201981957 201981953 201981955 201981957;
+}
+
+@
+list l6:level1 {
+	mso-level-number-format: bullet;
+	mso-level-text: \F0B7;
+	mso-level-tab-stop: none;
+	mso-level-number-position: left;
+	text-indent: -18.0pt;
+	font-family: Symbol;
+}
+
+ol {
+	margin-bottom: 0cm;
+}
+
+ul {
+	margin-bottom: 0cm;
+}
+</style>
+<style>
+/* Style Definitions */
+table.MsoNormalTable {
+	mso-style-name: "Tabla normal";
+	mso-tstyle-rowband-size: 0;
+	mso-tstyle-colband-size: 0;
+	mso-style-noshow: yes;
+	mso-style-priority: 99;
+	mso-style-qformat: yes;
+	mso-style-parent: "";
+	mso-padding-alt: 0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin: 0cm;
+	mso-para-margin-bottom: .0001pt;
+	mso-pagination: widow-orphan;
+	font-size: 10.0pt;
+	font-family: "Calibri", "sans-serif";
+	mso-bidi-font-family: "Times New Roman";
+}
+</style>
+</head>
+<body>
+	<table border="0" cellspacing="0" cellpadding="0" align="center"
+		class="mainTable_css">
+		<tr>
+			<td colspan="3" class="header_css">
+				<div class="logo_css" />
+			</td>
+		</tr>
+		<tr>
+			<td class="leftUp_shadow" />
+			<td class="up_shadow" />
+			<td class="rightUp_shadow" />
+		</tr>
+		<tr>
+			<td class="left_shadow" />
+			<td class="mainContent">
+				<!-- ******************************************************************* -->
+				<!-- *****************        CONTENIDO PRINICPAL          ************* -->
+				<!-- ******************************************************************* -->
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td><img src="design/images/banner.png"
+							style="padding-left: 0px;" /></td>
+					</tr>
+					<tr>
+						<td>
+							<div class="leftDataNews_css">
+								<div class="headerNews_css">Informacion del sistema</div>
+								<div class="bodyNews_css">
+									<div class="content_css">
+										<div class=Section1 id="parentInfoExtra">
+											<div id="infoextra">
+											</div>
+											<script language="javascript">
+												if (document.URL
+														.indexOf('disponibilidad') > -1)
+													document
+															.write('El tiempo de disponibilidad del sistema ha finalizado. La información que haya guardado hasta el momento sera desactivada. Si no completó el registro, deberá iniciar todo el proceso nuevamente el día siguiente');
+												if (document.URL
+														.indexOf('invalid') > -1) {
+													var parentDiv = document
+															.getElementById("parentInfoExtra");
+													parentDiv
+															.removeChild(document
+																	.getElementById("infoextra"));
+													document
+															.write('Hubo un error en el inicio de sesión, el número de PIN no coincide con el tipo de documento y/o número de documento ingresados, intente nuevamente');
+												}
+												if (document.URL
+														.indexOf('status') > -1)
+													document
+															.write('Hubo un error en el inicio de sesión, el número de PIN con el que esta intentando ingresar ya fue utilizado');
+												if (document.URL
+														.indexOf('unavailable') > -1)
+													document
+															.write('Hubo un error en el inicio de sesión, consulte al Administrador del Sistema');
+												if (document.URL
+														.indexOf('expired') > -1)
+													document
+															.write('Usted ha sido desactivado del sistema por inactividad de más de 15 minutos o porque cerró manualmente la sesión. Puede retomar el registro volviendo a ingresar al sistema. La información que haya guardado hasta el momento permanecerá activa, siempre y cuando se encuentre dentro del horario habilitado para el registro de la solicitud. Si no completó el registro en dicho horario, deberá iniciar todo el proceso nuevamente el día siguiente');
+												if (document.URL
+														.indexOf('captcha') > -1) {
+													var parentDiv = document
+															.getElementById("parentInfoExtra");
+													parentDiv
+															.removeChild(document
+																	.getElementById("infoextra"));
+													document
+															.write('El valor ingresado en el Captcha es invalido, intente nuevamente <br>');
+												}
+												if (document.URL
+														.indexOf('captchaserv') > -1)
+													document
+															.write('Hubo un error en el servicio del Captcha consulte con el administrador del Sistema');
+											</script>
+										</div>
+									</div>
+								</div>
+								<div class="footNews_css"></div>
+							</div> <!-- Vinculos lateral derecho -->
+							<div class="rightPanelLinks_css">
+								<div class="headerPanelLinks_css">INICIO PROCESO DE
+									RADICACION</div>
+								<div class="bodyPanelLinks_css">
+									<div class="textContent_css">
+										<form id="loginForm" action="login"
+											enctype="application/x-www-form-urlencoded" method="post">
+											<table>
+												<tr>
+													<td align="right"><label for="tipoDocumento"
+														class="typeDocu_css">Tipo de Documento</label></td>
+													<td><select id="tipoDocumento" name="tipoDocumento"
+														onchange="changeValue()" class="inputLogin_css">
+															<option value="1">Cédula</option>
+															<option value="2">Cédula de Extrajería</option>
+															<option value="3">Pasaporte</option>
+															<option value="9">NIT</option>
+													</select></td>
+												</tr>
+												<tr>
+													<td align="right"><label for="numeroDocumento"
+														class="numDocu_css">Número de Documento</label></td>
+													<td><input class="inputLogin_css" id="numeroDocumento"
+														title="Número del documento del solicitante que se ingresó en el formato de adquisición del PIN"
+														onFocusOut="changeValue()" onBlur="changeValue()"
+														maxlength="20" name="numeroDocumento" size="20"
+														type="text" value="" /></td>
+												</tr>
+												<tr>
+													<td align="right"><label for="j_password"
+														class="passLogin_css">PIN</label></td>
+													<td><input class="inputLogin_css" id="j_password"
+														maxlength="20" name="j_password" size="20" type="password"
+														value="" /></td>
+												</tr>
+												<tr>
+													<td colspan="2">
+														<div class="captcha_css">
+															<!-- ******************************************************** -->
+															<script type="text/javascript"
+																src="https://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+															<div id="recaptcha_div"></div>
+															<script type="text/javascript">
+																function showRecaptcha(
+																		element) {
+																	Recaptcha
+																			.create(
+																					"6LdSZNISAAAAAC3LiAH283M9M1wMFH0wma2BaiYH",
+																					element,
+																					{
+																						lang : 'es',
+																						theme : "white",
+																						callback : Recaptcha.focus_response_field
+																					});
+																}
+																showRecaptcha('recaptcha_div');
+															</script>
+															<!-- ******************************************************** -->
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td><input type="hidden" id="j_username"
+														maxlength="20" name="j_username" size="20" type="text"
+														value="" /> <input type="hidden" id="numCedula"
+														maxlength="20" name="numCedula" size="20" type="text"
+														value="" /></td>
+													<td><input class="btnLogin_css" id="submit"
+														name="submit" type="submit" value="Entrar"
+														onclick="return validate();" /> <input
+														class="btnLogin_css" id="reset" name="reset" type="reset"
+														value="Limpiar" /></td>
+												</tr>
+											</table>
+										</form>
+									</div>
+								</div>
+								<div class="footPanelLinks_css"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="creditos_css">
+							<div><br/><br/></div>
+						</td>
+
+					</tr>
+				</table> <!-- ******************************************************************* -->
+				<!-- *****************      FIN CONTENIDO PRINICPAL        ************* -->
+				<!-- ******************************************************************* -->
+			</td>
+			<td class="right_shadow"></td>
+		</tr>
+		<tr>
+			<td class="leftDown_shadow"></td>
+			<td class="down_shadow"></td>
+			<td class="rightDown_shadow"></td>
+		</tr>
+		<tr>
+			<td colspan="3" class="foot_css"><!--img
+				src="design/images/layout/linksInstitucionales.png" usemap="#Map" /-->
+		</tr>
+	</table>
+	<!--map name="Map" id="Map">
+		<area shape="rect" coords="368,-1,462,26"
+			href="http://programa.gobiernoenlinea.gov.co/ayuda.shtml" />
+		<area shape="rect" coords="275,-1,369,26"
+			href="http://www.contratos.gov.co/" />
+		<area shape="rect" coords="182,0,276,27"
+			href="http://horalegal.sic.gov.co/" />
+		<area shape="rect" coords="82,0,183,25"
+			href="http://www.minproteccionsocial.gov.co" />
+		<area shape="rect" coords="-1,-2,81,23"
+			href="http://www.gobiernoenlinea.gov.co" />
+	</map-->
+	<!--div class="icePnlGrp">
+		<table class="icePnlGrd">
+			<tbody>
+				<tr class="icePnlGrdRow1">
+					<td class="icePnlGrdCol1"></td>
+					<td class="icePnlGrdCol2"></td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr class="icePnlGrdRow1">
+					<td class="icePnlGrdCol1"></td>
+					<td class="icePnlGrdCol2"></td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr class="icePnlGrdRow1">
+					<td class="icePnlGrdCol1"></td>
+					<td class="icePnlGrdCol2"></td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="icePnlGrd">
+			<tbody>
+				<tr class="icePnlGrdRow1">
+					<td class="icePnlGrdCol1"></td>
+					<td class="icePnlGrdCol2"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div-->
+	<script language="javascript">
+		function changeValue() {
+			if (document.getElementById('tipoDocumento').value == "9") {
+				document.getElementById('numCedula').value = document
+						.getElementById('numeroDocumento').value;
+				var expReg = /^\d{5,20}$/;
+				if (expReg.test(document.getElementById('numCedula').value)) {
+					var longitud = document.getElementById('numCedula').value.length
+					var inicio = document.getElementById('numCedula').value
+							.substr(0, (longitud - 1));
+					var fin = document.getElementById('numCedula').value
+							.substr((longitud - 1), longitud);
+					document.getElementById('numeroDocumento').value = inicio
+							+ "-" + fin;
+				}
+			}
+		}
+		function typeContent() {
+			var numero = document.getElementById('numeroDocumento').value;
+			var salida = numero.split("-")
+			if (salida[1] != undefined) {
+				document.getElementById('numCedula').value = salida[0]
+						+ salida[1];
+			} else {
+				document.getElementById('numCedula').value = document
+						.getElementById('numeroDocumento').value;
+			}
+			switch (document.getElementById('tipoDocumento').value) {
+			case "1":
+				expReg = /^\d{5,20}$/;
+				if (expReg.test(document.getElementById('numCedula').value)) {
+					return true;
+				} else {
+					window
+							.alert('Debe ingresar caracteres numéricos para el campo número de documento');
+					return false;
+				}
+				break;
+			case "2":
+			case "3":
+				var expReg = /^[A-Z,a-z,0-9]{5,20}$/;
+				if (expReg.test(document.getElementById('numCedula').value)) {
+					return true;
+				} else {
+					window
+							.alert('Debe ingresar caracteres alfa-numéricos para el campo número de documento');
+					return false;
+				}
+				break;
+			case "9":
+				expReg = /^\d{5,20}$/;
+				if (expReg.test(document.getElementById('numCedula').value)) {
+					return true;
+				} else {
+					window
+							.alert('Debe ingresar caracteres numéricos para el campo número de documento');
+					return false;
+				}
+				break;
+			}
+		}
+		function validate() {
+			if (document.getElementById('tipoDocumento').value == ""
+					|| document.getElementById('numeroDocumento').value == ""
+					|| document.getElementById('j_password').value == ""
+					|| document.getElementById('recaptcha_response_field').value == "") {
+				setTimeout("showValidateMsg();", 50);
+				return false;
+			} else {
+				if (typeContent()) {
+					document.getElementById('j_username').value = document
+							.getElementById('tipoDocumento').value
+							+ ";" + document.getElementById('numCedula').value;
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+		function showValidateMsg() {
+			window
+					.alert('Debe ingresar un valor para los campos tipo de documento, número de documento, PIN y Valor Captcha');
+		}
+	</script>
+</body>
+</html>
